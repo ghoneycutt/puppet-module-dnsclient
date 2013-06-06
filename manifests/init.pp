@@ -1,73 +1,7 @@
 # ## Class: dnsclient ##
 #
 # This module manages /etc/resolv.conf and is meant to be included in the
-# common class that applies to all systems
-#
-# ### Parameters ###
-#
-# See RESOLV.CONF(5) for more information regarding /etc/resolv.conf settings
-#
-# nameservers
-# -----------
-# Array of name servers.
-#
-# - *Default*: Google's public name servers
-#
-# options
-# -------
-# Array of options.
-#
-# - *Default*: 'rotate' and 'timeout:1'
-#
-# search
-# ------
-# Array of domains for search list. This is mutually exclusive with **domain**. If both are set, search will be used and domain will be ignored.
-#
-# - *Default*: none
-#
-# domain
-# ------
-# Domain setting. See **search**.
-#
-# - *Default*: none
-#
-# sortlist
-# --------
-# Array of sortlist addresses.
-#
-# - *Default*: none
-#
-# resolver_config_file
-# --------------------
-# Path to resolv.conf.
-#
-# - *Default*: '/etc/resolv.conf'
-#
-# resolver_config_file_ensure
-# ---------------------------
-# ensure attribute for file resource. Valid values are 'file', 'present' and 'absent'.
-#
-# - *Default*: file
-#
-# resolver_config_file_owner
-# --------------------------
-# resolv.conf's owner.
-#
-# - *Default*: 'root'
-#
-#
-# resolver_config_file_group
-# --------------------------
-# resolv.conf's group.
-#
-# - *Default*: 'root'
-#
-#
-# resolver_config_file_mode
-# -------------------------
-# resolv.conf's mode.
-#
-# - *Default*: '0644'
+# common class that applies to all systems.
 #
 class dnsclient                 (
   $nameservers                 = [ '8.8.8.8',
