@@ -1,7 +1,7 @@
 require 'spec_helper'
 describe 'dnsclient' do
 
-  describe 'when using default values for class' do
+  context 'when using default values for class' do
     it {
       should contain_file('dnsclient_resolver_config_file').with({
         'ensure' => 'file',
@@ -20,7 +20,7 @@ nameserver 8.8.4.4
     }
   end
 
-  describe 'with parameter nameservers set' do
+  context 'with parameter nameservers set' do
     let :params do
       { :nameservers => ['4.2.2.2', '4.2.2.1'] }
     end
@@ -43,7 +43,7 @@ nameserver 4.2.2.1
     }
   end
 
-  describe 'with parameter nameservers set to a single nameserver as a string ' do
+  context 'with parameter nameservers set to a single nameserver as a string' do
     let :params do
       { :nameservers => '4.2.2.2' }
     end
@@ -65,7 +65,7 @@ nameserver 4.2.2.2
     }
   end
 
-  describe 'with no options' do
+  context 'with no options' do
     let :params do
       { :options => 'UNSET' }
     end
@@ -87,7 +87,7 @@ nameserver 8.8.4.4
     }
   end
 
-  describe 'with options set to a single value' do
+  context 'with options set to a single value' do
     let :params do
       { :options => 'ndots:2' }
     end
@@ -110,7 +110,7 @@ nameserver 8.8.4.4
     }
   end
 
-  describe 'with options set to multiple values' do
+  context 'with options set to multiple values' do
     let :params do
       { :options => ['ndots:2', 'rotate'] }
     end
@@ -133,7 +133,7 @@ nameserver 8.8.4.4
     }
   end
 
-  describe 'with search set to multiple values' do
+  context 'with search set to multiple values' do
     let :params do
       { :search => ['foo.example.tld', 'example.tld'] }
     end
@@ -157,7 +157,7 @@ nameserver 8.8.4.4
     }
   end
 
-  describe 'with search set to a single value' do
+  context 'with search set to a single value' do
     let :params do
       { :search => 'example.tld' }
     end
@@ -181,7 +181,7 @@ nameserver 8.8.4.4
     }
   end
 
-  describe 'with search and domain set' do
+  context 'with search and domain set' do
     let :params do
       {
         :search => ['foo.example.tld', 'example.tld'],
@@ -208,7 +208,7 @@ nameserver 8.8.4.4
     }
   end
 
-  describe 'with domain set' do
+  context 'with domain set' do
     let :params do
       { :domain => 'valid.tld' }
     end
@@ -232,7 +232,7 @@ nameserver 8.8.4.4
     }
   end
 
-  describe 'with domain and no options set' do
+  context 'with domain and no options set' do
     let :params do
       {
         :domain  => 'valid.tld',
@@ -258,31 +258,31 @@ nameserver 8.8.4.4
     }
   end
 
-  # TODO - does not actually catch the fail()
-  describe 'with search set to an invalid single value' do
+  context 'with search set to an invalid single value' do
     let :params do
       { :search => '-notvalid.tld' }
     end
 
-    it {
-      # GH: this does not seem to work. if search is valid it should fail and does not
-      should raise_error()
-    }
+    it 'should fail' do
+      expect {
+        should raise_error(Puppet::Error, /search parameter does not match regex./)
+      }
+    end
   end
 
-  # TODO - does not actually catch the fail()
-  describe 'with search set to an invalid value in an array' do
+  context 'with search set to an invalid value in an array' do
     let :params do
       { :search => ['valid.tld', '-notvalid.tld'] }
     end
 
-    it {
-      # GH: this does not seem to work. if search is valid it should fail and does not
-      should raise_error()
-    }
+    it 'should fail' do
+      expect {
+        should raise_error(Puppet::Error, /search parameter does not match regex./)
+      }
+    end
   end
 
-  describe 'with only search' do
+  context 'with only search' do
     let :params do
       {
         :search  => 'valid.tld',
@@ -307,7 +307,7 @@ nameserver 8.8.4.4
     }
   end
 
-  describe 'with search and sortlist' do
+  context 'with search and sortlist' do
     let :params do
       {
         :search   => 'valid.tld',
@@ -334,7 +334,7 @@ nameserver 8.8.4.4
     }
   end
 
-  describe 'with search, sortlist, and options' do
+  context 'with search, sortlist, and options' do
     let :params do
       {
         :search   => 'valid.tld',
@@ -361,7 +361,7 @@ nameserver 8.8.4.4
     }
   end
 
-  describe 'with sortlist set to an array of values' do
+  context 'with sortlist set to an array of values' do
     let :params do
       { :sortlist => ['10.10.10.0/24', '10.10.11.0/24'] }
     end
@@ -385,7 +385,7 @@ nameserver 8.8.4.4
     }
   end
 
-  describe 'with sortlist, options, and domain' do
+  context 'with sortlist, options, and domain' do
     let :params do
       {
         :sortlist => ['10.10.10.0/24', '10.10.11.0/24'],
@@ -413,7 +413,7 @@ nameserver 8.8.4.4
     }
   end
 
-  describe 'with sortlist, no options, and domain' do
+  context 'with sortlist, no options, and domain' do
     let :params do
       {
         :sortlist => ['10.10.10.0/24', '10.10.11.0/24'],
@@ -441,7 +441,7 @@ nameserver 8.8.4.4
     }
   end
 
-  describe 'with sortlist set to a single value' do
+  context 'with sortlist set to a single value' do
     let :params do
       { :sortlist => '10.10.10.0/24' }
     end
@@ -465,18 +465,19 @@ nameserver 8.8.4.4
     }
   end
 
-  # TODO - write test
-  describe 'with parameter resolver_config_file_ensure not set to \'file\' \'present\' or \'absent\'' do
+  context 'with parameter resolver_config_file_ensure not set to \'file\' \'present\' or \'absent\'' do
     let :params do
       { :resolver_config_file_ensure => 'invalid' }
     end
 
-    it {
-      # GH: code to catch fail()
-    }
+    it 'should fail' do
+      expect {
+        should raise_error(Puppet::Error, /Valid values for \$resolver_config_file_ensure are \'absent\', \'file\', or \'present\'. Specified value is invalid/)
+      }
+    end
   end
 
-  describe 'with parameter resolver_config_file_ensure set to present' do
+  context 'with parameter resolver_config_file_ensure set to present' do
     let :params do
       { :resolver_config_file_ensure => 'present' }
     end
@@ -499,7 +500,7 @@ nameserver 8.8.4.4
     }
   end
 
-  describe 'with parameter resolver_config_file_ensure set to absent' do
+  context 'with parameter resolver_config_file_ensure set to absent' do
     let :params do
       { :resolver_config_file_ensure => 'absent' }
     end
@@ -511,7 +512,7 @@ nameserver 8.8.4.4
     }
   end
 
-  describe 'with parameter resolver_config_file set' do
+  context 'with parameter resolver_config_file set' do
     let :params do
       { :resolver_config_file => '/tmp/resolv.conf' }
     end
@@ -523,7 +524,7 @@ nameserver 8.8.4.4
     }
   end
 
-  describe 'with parameter resolver_config_file_owner set' do
+  context 'with parameter resolver_config_file_owner set' do
     let :params do
       { :resolver_config_file_owner => 'foo' }
     end
@@ -535,7 +536,7 @@ nameserver 8.8.4.4
     }
   end
 
-  describe 'with parameter resolver_config_file_group set' do
+  context 'with parameter resolver_config_file_group set' do
     let :params do
       { :resolver_config_file_group => 'bar' }
     end
@@ -547,7 +548,7 @@ nameserver 8.8.4.4
     }
   end
 
-  describe 'with parameter resolver_config_file_mode set' do
+  context 'with parameter resolver_config_file_mode set' do
     let :params do
       { :resolver_config_file_mode => '0777' }
     end
