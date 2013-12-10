@@ -7,4 +7,4 @@ summary 'Manage resolver'
 description "Manage a DNS client's resolver"
 project_page 'https://github.com/ghoneycutt/puppet-module-dnsclient/'
 
-dependency 'puppetlabs/stdlib',  '3.2.x'
+dependency 'puppetlabs/stdlib', '>= 3.2.0'
