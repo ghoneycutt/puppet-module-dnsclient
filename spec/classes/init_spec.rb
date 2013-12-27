@@ -1,7 +1,12 @@
 require 'spec_helper'
 describe 'dnsclient' do
 
+  it { should compile.with_all_deps }
+
   context 'when using default values for class' do
+
+    it { should contain_class('dnsclient') }
+
     it {
       should contain_file('dnsclient_resolver_config_file').with({
         'ensure' => 'file',
@@ -24,6 +29,8 @@ nameserver 8.8.4.4
     let :params do
       { :nameservers => ['4.2.2.2', '4.2.2.1'] }
     end
+
+    it { should contain_class('dnsclient') }
 
     it {
       should contain_file('dnsclient_resolver_config_file').with({
@@ -48,6 +55,8 @@ nameserver 4.2.2.1
       { :nameservers => '4.2.2.2' }
     end
 
+    it { should contain_class('dnsclient') }
+
     it {
       should contain_file('dnsclient_resolver_config_file').with({
         'ensure' => 'file',
@@ -70,6 +79,8 @@ nameserver 4.2.2.2
       { :options => 'UNSET' }
     end
 
+    it { should contain_class('dnsclient') }
+
     it {
       should contain_file('dnsclient_resolver_config_file').with({
         'ensure' => 'file',
@@ -91,6 +102,8 @@ nameserver 8.8.4.4
     let :params do
       { :options => 'ndots:2' }
     end
+
+    it { should contain_class('dnsclient') }
 
     it {
       should contain_file('dnsclient_resolver_config_file').with({
@@ -115,6 +128,8 @@ nameserver 8.8.4.4
       { :options => ['ndots:2', 'rotate'] }
     end
 
+    it { should contain_class('dnsclient') }
+
     it {
       should contain_file('dnsclient_resolver_config_file').with({
         'ensure' => 'file',
@@ -137,6 +152,8 @@ nameserver 8.8.4.4
     let :params do
       { :search => ['foo.example.tld', 'example.tld'] }
     end
+
+    it { should contain_class('dnsclient') }
 
     it {
       should contain_file('dnsclient_resolver_config_file').with({
@@ -161,6 +178,8 @@ nameserver 8.8.4.4
     let :params do
       { :search => 'example.tld' }
     end
+
+    it { should contain_class('dnsclient') }
 
     it {
       should contain_file('dnsclient_resolver_config_file').with({
@@ -189,6 +208,8 @@ nameserver 8.8.4.4
       }
     end
 
+    it { should contain_class('dnsclient') }
+
     it {
       should contain_file('dnsclient_resolver_config_file').with({
         'ensure' => 'file',
@@ -212,6 +233,8 @@ nameserver 8.8.4.4
     let :params do
       { :domain => 'valid.tld' }
     end
+
+    it { should contain_class('dnsclient') }
 
     it {
       should contain_file('dnsclient_resolver_config_file').with({
@@ -239,6 +262,8 @@ nameserver 8.8.4.4
         :options => 'UNSET',
       }
     end
+
+    it { should contain_class('dnsclient') }
 
     it {
       should contain_file('dnsclient_resolver_config_file').with({
@@ -289,6 +314,9 @@ nameserver 8.8.4.4
         :options => 'UNSET',
       }
     end
+
+    it { should contain_class('dnsclient') }
+
     it {
       should contain_file('dnsclient_resolver_config_file').with({
         'ensure' => 'file',
@@ -315,6 +343,9 @@ nameserver 8.8.4.4
         :options  => 'UNSET',
       }
     end
+
+    it { should contain_class('dnsclient') }
+
     it {
       should contain_file('dnsclient_resolver_config_file').with({
         'ensure' => 'file',
@@ -341,6 +372,9 @@ nameserver 8.8.4.4
         :sortlist => ['10.10.10.0/24', '10.10.11.0/24'],
       }
     end
+
+    it { should contain_class('dnsclient') }
+
     it {
       should contain_file('dnsclient_resolver_config_file').with({
         'ensure' => 'file',
@@ -365,6 +399,8 @@ nameserver 8.8.4.4
     let :params do
       { :sortlist => ['10.10.10.0/24', '10.10.11.0/24'] }
     end
+
+    it { should contain_class('dnsclient') }
 
     it {
       should contain_file('dnsclient_resolver_config_file').with({
@@ -392,6 +428,8 @@ nameserver 8.8.4.4
         :domain   => 'valid.tld',
       }
     end
+
+    it { should contain_class('dnsclient') }
 
     it {
       should contain_file('dnsclient_resolver_config_file').with({
@@ -422,6 +460,8 @@ nameserver 8.8.4.4
       }
     end
 
+    it { should contain_class('dnsclient') }
+
     it {
       should contain_file('dnsclient_resolver_config_file').with({
         'ensure' => 'file',
@@ -445,6 +485,8 @@ nameserver 8.8.4.4
     let :params do
       { :sortlist => '10.10.10.0/24' }
     end
+
+    it { should contain_class('dnsclient') }
 
     it {
       should contain_file('dnsclient_resolver_config_file').with({
@@ -482,6 +524,8 @@ nameserver 8.8.4.4
       { :resolver_config_file_ensure => 'present' }
     end
 
+    it { should contain_class('dnsclient') }
+
     it {
       should contain_file('dnsclient_resolver_config_file').with({
         'ensure' => 'present',
@@ -505,6 +549,8 @@ nameserver 8.8.4.4
       { :resolver_config_file_ensure => 'absent' }
     end
 
+    it { should contain_class('dnsclient') }
+
     it {
       should contain_file('dnsclient_resolver_config_file').with({
         'ensure' => 'absent',
@@ -516,6 +562,8 @@ nameserver 8.8.4.4
     let :params do
       { :resolver_config_file => '/tmp/resolv.conf' }
     end
+
+    it { should contain_class('dnsclient') }
 
     it {
       should contain_file('dnsclient_resolver_config_file').with({
@@ -529,6 +577,8 @@ nameserver 8.8.4.4
       { :resolver_config_file_owner => 'foo' }
     end
 
+    it { should contain_class('dnsclient') }
+
     it {
       should contain_file('dnsclient_resolver_config_file').with({
         'owner' => 'foo',
@@ -541,6 +591,8 @@ nameserver 8.8.4.4
       { :resolver_config_file_group => 'bar' }
     end
 
+    it { should contain_class('dnsclient') }
+
     it {
       should contain_file('dnsclient_resolver_config_file').with({
         'group' => 'bar',
@@ -552,6 +604,8 @@ nameserver 8.8.4.4
     let :params do
       { :resolver_config_file_mode => '0777' }
     end
+
+    it { should contain_class('dnsclient') }
 
     it {
       should contain_file('dnsclient_resolver_config_file').with({
