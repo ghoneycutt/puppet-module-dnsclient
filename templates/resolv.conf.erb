@@ -17,7 +17,7 @@ sortlist <%= @sortlist.join(' ') %>
 <% if @domain != 'UNSET' and @search[0] == 'UNSET' -%>
 domain <%= @domain %>
 <% end -%>
-<% if @options[0] != 'UNSET' -%>
+<% if @options[0] != 'UNSET' and @options != 'UNSET' -%>
 <% if @options.class == String -%>
 options <%= @options %>
 <% else -%>
