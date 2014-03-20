@@ -98,6 +98,30 @@ nameserver 8.8.4.4
     }
   end
 
+  context 'with no options using array type' do
+    let :params do
+      { :options => ['UNSET'] }
+    end
+
+    it { should contain_class('dnsclient') }
+
+    it {
+      should contain_file('dnsclient_resolver_config_file').with({
+        'ensure' => 'file',
+        'path'   => '/etc/resolv.conf',
+        'owner'  => 'root',
+        'group'  => 'root',
+        'mode'   => '0644',
+      })
+      should contain_file('dnsclient_resolver_config_file').with_content(
+%{# This file is being maintained by Puppet.
+# DO NOT EDIT
+nameserver 8.8.8.8
+nameserver 8.8.4.4
+})
+    }
+  end
+
   context 'with options set to a single value' do
     let :params do
       { :options => 'ndots:2' }
