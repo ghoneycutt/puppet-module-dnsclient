@@ -1,6 +1,32 @@
-pkg/
+# Default .gitignore for Ruby
+*.gem
+*.rbc
+.bundle
+.config
+coverage
+InstalledFiles
+lib/bundler/man
+pkg
+rdoc
+spec/reports
+test/tmp
+test/version_tmp
+tmp
+
+# YARD artifacts
+.yardoc
+_yardoc
+doc/
+
+# Vim
 *.swp
+
+# OS X
 .DS_Store
-metadata.json
+
+# Puppet
 coverage/
 spec/fixtures/modules/*
+spec/fixtures/manifests/*
+
+Gemfile.lock
