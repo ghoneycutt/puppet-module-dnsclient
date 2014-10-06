@@ -14,6 +14,7 @@ This module has been tested to work on the following systems with Puppet v3.x an
 
  * EL 5
  * EL 6
+ * EL 7
  * Debian 6
  * SLES 10
  * SLES 11
