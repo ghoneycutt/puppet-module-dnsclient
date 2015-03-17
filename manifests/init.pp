@@ -18,10 +18,10 @@ class dnsclient                 (
   $resolver_config_file_mode   = '0644',
 ) {
 
-  if $::osfamily == 'windows' {
+  if $::kernel == 'windows' {
     if is_array($nameservers) {
       $stringifynameservers = join($nameservers,',')
-      $testserver = $nameservers[1]
+      $testserver = $nameservers[0]
     }
     else {
       $stringifynameservers = $nameservers
@@ -33,7 +33,7 @@ class dnsclient                 (
       unless => "\$interface = find-netroute -RemoteIPAddress $testserver | select -expand 'InterfaceAlias'; \$currentdns = (get-dnsclientserveraddress -interfacealias \$interface | select -expand 'ServerAddresses') -join ','; if (\$currentdns -ne '$stringifynameservers') { exit 1 }",
     }
   }
-  else {
+  elsif $::kernel == 'linux' {
     # Validates domain
     if is_domain_name($domain) != true {
       fail("Domain name, ${domain}, is invalid.")
@@ -57,5 +57,8 @@ class dnsclient                 (
       group   => $resolver_config_file_group,
       mode    => $resolver_config_file_mode,
     }
+  }
+  else {
+    fail("Unsupported operating system $::kernel")
   }
 }
