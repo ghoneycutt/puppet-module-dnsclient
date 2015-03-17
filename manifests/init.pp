@@ -21,13 +21,16 @@ class dnsclient                 (
   if $::osfamily == 'windows' {
     if is_array($nameservers) {
       $stringifynameservers = join($nameservers,',')
+      $testserver = $nameservers[1]
     }
     else {
       $stringifynameservers = $nameservers
+      $testserver = $nameservers
     }
     exec { 'set dns':
-      command => "\$interface = get-netipconfiguration | where-object {\$_.IPv4DefaultGateway} | select -expand 'InterfaceAlias'; set-dnsclientserveraddress -interfacealias \$interface -serveraddress {$stringifynameservers}",
+      command => "\$interface = find-netroute -RemoteIPAddress $testserver | select -expand 'InterfaceAlias'; set-dnsclientserveraddress -interfacealias \$interface -serveraddress {$stringifynameservers}",
       provider => powershell,
+      unless => "\$interface = find-netroute -RemoteIPAddress $testserver | select -expand 'InterfaceAlias'; \$currentdns = (get-dnsclientserveraddress -interfacealias \$interface | select -expand 'ServerAddresses') -join ','; if (\$currentdns -ne '$stringifynameservers') { exit 1 }",
     }
   }
   else {
