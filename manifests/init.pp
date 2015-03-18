@@ -16,7 +16,7 @@ class dnsclient (
   $resolver_config_file_owner  = 'root',
   $resolver_config_file_group  = 'root',
   $resolver_config_file_mode   = '0644',
-  ){
+) {
 
   if $::kernel == 'windows' {
     if is_array($nameservers) {
