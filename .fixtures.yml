@@ -3,5 +3,9 @@ fixtures:
     'stdlib':
       repo: 'git://github.com/puppetlabs/puppetlabs-stdlib.git'
       ref: '3.2.0'
+  forge_modules:
+    'powershell':
+      repo: 'puppetlabs/powershell'
+      ref: '1.0.4'
   symlinks:
     'dnsclient': "#{source_dir}"
