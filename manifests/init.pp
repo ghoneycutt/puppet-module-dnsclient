@@ -18,27 +18,41 @@ class dnsclient                 (
   $resolver_config_file_mode   = '0644',
 ) {
 
-  # Validates domain
-  if is_domain_name($domain) != true {
-    fail("Domain name, ${domain}, is invalid.")
-  }
-
-  # Validates $resolver_config_file_ensure
-  case $resolver_config_file_ensure {
-    'file', 'present', 'absent': {
-      # noop, these values are valid
+  if $::osfamily == 'windows' {
+    if is_array($nameservers) {
+      $stringifynameservers = join($nameservers,',')
     }
-    default: {
-      fail("Valid values for \$resolver_config_file_ensure are \'absent\', \'file\', or \'present\'. Specified value is ${resolver_config_file_ensure}")
+    else {
+      $stringifynameservers = $nameservers
+    }
+    exec { 'set dns':
+      command => "\$interface = get-netipconfiguration | where-object {\$_.IPv4DefaultGateway} | select -expand 'InterfaceAlias'; set-dnsclientserveraddress -interfacealias \$interface -serveraddress {$stringifynameservers}",
+      provider => powershell,
     }
   }
+  else {
+    # Validates domain
+    if is_domain_name($domain) != true {
+      fail("Domain name, ${domain}, is invalid.")
+    }
 
-  file { 'dnsclient_resolver_config_file':
-    ensure  => $resolver_config_file_ensure,
-    content => template('dnsclient/resolv.conf.erb'),
-    path    => $resolver_config_file,
-    owner   => $resolver_config_file_owner,
-    group   => $resolver_config_file_group,
-    mode    => $resolver_config_file_mode,
+    # Validates $resolver_config_file_ensure
+    case $resolver_config_file_ensure {
+      'file', 'present', 'absent': {
+        # noop, these values are valid
+      }
+      default: {
+        fail("Valid values for \$resolver_config_file_ensure are \'absent\', \'file\', or \'present\'. Specified value is ${resolver_config_file_ensure}")
+      }
+    }
+
+    file { 'dnsclient_resolver_config_file':
+      ensure  => $resolver_config_file_ensure,
+      content => template('dnsclient/resolv.conf.erb'),
+      path    => $resolver_config_file,
+      owner   => $resolver_config_file_owner,
+      group   => $resolver_config_file_group,
+      mode    => $resolver_config_file_mode,
+    }
   }
 }
