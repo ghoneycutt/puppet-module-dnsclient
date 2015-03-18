@@ -8,4 +8,4 @@ fixtures:
       repo: 'puppetlabs/powershell'
       ref: '1.0.4'
   symlinks:
-    'dnsclient': '#{source_dir}'
+    'dnsclient': "#{source_dir}"
