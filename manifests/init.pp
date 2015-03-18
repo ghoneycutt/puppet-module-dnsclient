@@ -3,7 +3,7 @@
 # This module manages /etc/resolv.conf and is meant to be included in the
 # common class that applies to all systems.
 #
-class dnsclient                 (
+class dnsclient (
   $nameservers                 = [ '8.8.8.8',
                                   '8.8.4.4' ],
   $options                     = [ 'rotate',
@@ -16,7 +16,7 @@ class dnsclient                 (
   $resolver_config_file_owner  = 'root',
   $resolver_config_file_group  = 'root',
   $resolver_config_file_mode   = '0644',
-) {
+  ){
 
   if $::kernel == 'windows' {
     if is_array($nameservers) {
@@ -28,9 +28,9 @@ class dnsclient                 (
       $testserver = $nameservers
     }
     exec { 'set dns':
-      command => "\$interface = find-netroute -RemoteIPAddress $testserver | select -expand 'InterfaceAlias'; set-dnsclientserveraddress -interfacealias \$interface -serveraddress {$stringifynameservers}",
+      command  => "\$interface = find-netroute -RemoteIPAddress ${testserver} | select -expand 'InterfaceAlias'; set-dnsclientserveraddress -interfacealias \$interface -serveraddress {${stringifynameservers}}",
       provider => powershell,
-      unless => "\$interface = find-netroute -RemoteIPAddress $testserver | select -expand 'InterfaceAlias'; \$currentdns = (get-dnsclientserveraddress -interfacealias \$interface | select -expand 'ServerAddresses') -join ','; if (\$currentdns -ne '$stringifynameservers') { exit 1 }",
+      unless   => "\$interface = find-netroute -RemoteIPAddress ${testserver} | select -expand 'InterfaceAlias'; \$currentdns = (get-dnsclientserveraddress -interfacealias \$interface | select -expand 'ServerAddresses') -join ','; if (\$currentdns -ne '${stringifynameservers}') { exit 1 }",
     }
   }
   elsif $::kernel == 'linux' {
@@ -59,6 +59,6 @@ class dnsclient                 (
     }
   }
   else {
-    fail("Unsupported operating system $::kernel")
+    fail("Unsupported operating system ${::kernel}")
   }
 }
