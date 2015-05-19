@@ -31,3 +31,6 @@ nameserver <%= @nameservers %>
 nameserver <%= nameserver %>
 <% end -%>
 <% end -%>
+<% if @lookup[0] != 'UNSET' -%>
+lookup<% @lookup.each do |lookup| %> <%= lookup %><% end %>
+<% end -%>

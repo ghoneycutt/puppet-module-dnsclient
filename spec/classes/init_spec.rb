@@ -613,4 +613,82 @@ nameserver 8.8.4.4
       })
     }
   end
+
+  describe 'parameter lookup' do
+    context 'set to default value' do
+      context 'on OpenBSD' do
+        let :facts do
+          { :operatingsystem => 'OpenBSD' }
+        end
+        it {
+          should contain_file('dnsclient_resolver_config_file').with_content(
+%{# This file is being maintained by Puppet.
+# DO NOT EDIT
+options rotate timeout:1
+nameserver 8.8.8.8
+nameserver 8.8.4.4
+})
+        }
+      end
+      context 'on non-OpenBSD' do
+        let :facts do
+          { :operatingsystem => 'other-os' }
+        end
+        it {
+          should contain_file('dnsclient_resolver_config_file').with_content(
+%{# This file is being maintained by Puppet.
+# DO NOT EDIT
+options rotate timeout:1
+nameserver 8.8.8.8
+nameserver 8.8.4.4
+})
+        }
+      end
+    end
+
+    context 'set to a valid array' do
+      let :params do
+        { :lookup => ['file', 'bind'] }
+      end
+      context 'on OpenBSD' do
+        let :facts do
+          { :operatingsystem => 'OpenBSD' }
+        end
+        it {
+          should contain_file('dnsclient_resolver_config_file').with_content(
+%{# This file is being maintained by Puppet.
+# DO NOT EDIT
+options rotate timeout:1
+nameserver 8.8.8.8
+nameserver 8.8.4.4
+lookup file bind
+})
+        }
+      end
+      context 'on non-OpenBSD' do
+        let :facts do
+          { :operatingsystem => 'other-os' }
+        end
+        it 'should fail' do
+          expect {
+            should contain_class('dnsclient')
+          }.to raise_error(Puppet::Error,/the dnsclient::lookup parameter is only supported on OpenBSD\. Detected operatingsystem is other-os\./)
+        end
+      end
+    end
+
+    context 'set to an invalid type on a valid operatingsystem (OpenBSD)' do
+      let :params do
+        { :lookup => 'file bind' }
+      end
+      let :facts do
+        { :operatingsystem => 'OpenBSD' }
+      end
+      it 'should fail' do
+        expect {
+          should contain_class('dnsclient')
+        }.to raise_error(Puppet::Error,/the dnsclient::lookup parameter needs to be an array of strings\./)
+      end
+    end
+  end
 end

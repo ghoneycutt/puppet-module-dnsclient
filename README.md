@@ -21,6 +21,7 @@ This module has been tested to work on the following systems with Puppet v3.x on
  * Solaris 10
  * Ubuntu 10.04 LTS (Lucid Lynx)
  * Ubuntu 12.04 LTS (Precise Pangolin)
+ * OpenBSD 5
 
 # Parameters #
 
@@ -54,6 +55,12 @@ Domain setting. See **search**.
 sortlist
 --------
 Array of sortlist addresses.
+
+- *Default*: none
+
+lookup
+------
+Array of lookup options in OpenBSD.
 
 - *Default*: none
 
