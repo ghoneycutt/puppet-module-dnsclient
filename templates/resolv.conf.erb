@@ -21,7 +21,9 @@ domain <%= @domain %>
 <% if @options.class == String -%>
 options <%= @options %>
 <% else -%>
+<% if ! @options.empty? -%>
 options<% @options.each do |option| %> <%= option %><% end %>
+<% end -%>
 <% end -%>
 <% end -%>
 <% if @nameservers.class == String -%>
