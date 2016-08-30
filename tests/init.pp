@@ -1,1 +1,1 @@
-include dnsclient
+include ::dnsclient

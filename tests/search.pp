@@ -1,4 +1,6 @@
-class { 'dnsclient':
-  search => [ 'foo.example.tld',
-              'example.tld' ],
+class { '::dnsclient':
+  search => [
+    'foo.example.tld',
+    'example.tld',
+  ],
 }
