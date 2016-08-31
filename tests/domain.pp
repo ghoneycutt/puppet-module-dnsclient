@@ -1,3 +1,3 @@
-class { 'dnsclient':
+class { '::dnsclient':
   domain => 'example.tld',
 }
