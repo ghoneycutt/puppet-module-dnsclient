@@ -1,0 +1,10 @@
+---
+engines:
+  fixme:
+    enabled: true
+ratings:
+  paths: []
+exclude_paths:
+- spec/
+- tests/
+- pkg/

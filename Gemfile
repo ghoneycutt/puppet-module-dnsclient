@@ -22,6 +22,8 @@ gem 'puppet-lint-trailing_comma-check'
 gem 'puppet-lint-undef_in_function-check'
 gem 'puppet-lint-unquoted_string-check'
 gem 'puppet-lint-variable_contains_upcase'
+gem 'simplecov', require: false
+gem 'codeclimate-test-reporter', require: false
 
 gem 'rspec',     '~> 2.0'   if RUBY_VERSION >= '1.8.7' and RUBY_VERSION < '1.9'
 gem 'rake',      '~> 10.0'  if RUBY_VERSION >= '1.8.7' and RUBY_VERSION < '1.9'
