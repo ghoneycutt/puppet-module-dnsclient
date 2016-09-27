@@ -91,4 +91,8 @@ resolv.conf's mode.
 
 - *Default*: '0644'
 
+conf_replace
+-------------------------
+Allow or disallow manual edition of resolv.conf. Valid values are true or false.
 
+- *Default*: true
