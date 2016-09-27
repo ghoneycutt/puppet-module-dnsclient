@@ -16,6 +16,7 @@ class dnsclient                 (
   $resolver_config_file_owner  = 'root',
   $resolver_config_file_group  = 'root',
   $resolver_config_file_mode   = '0644',
+  $conf_replace                = true,
 ) {
 
   # Validates domain
@@ -40,5 +41,6 @@ class dnsclient                 (
     owner   => $resolver_config_file_owner,
     group   => $resolver_config_file_group,
     mode    => $resolver_config_file_mode,
+    replace => $conf_replace,
   }
 }
