@@ -92,3 +92,8 @@ resolv.conf's mode.
 - *Default*: '0644'
 
 
+resolver_config_file_backup
+-------------------------
+If set to a valid value, configures the backup parameter setting for the resolv.conf file. Undef does not set the backup parameter.
+
+- *Default*: undef

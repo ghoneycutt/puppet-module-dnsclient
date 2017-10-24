@@ -613,4 +613,18 @@ nameserver 8.8.4.4
       })
     }
   end
+
+  context 'with parameter backup set to false' do
+    let :params do
+      { :backup => false }
+    end
+
+    it { should contain_class('dnsclient') }
+
+    it {
+      should contain_file('dnsclient_resolver_config_file').with({
+        'backup' => false,
+      })
+    }
+  end
 end
