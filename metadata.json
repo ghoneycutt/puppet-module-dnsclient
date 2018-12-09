@@ -1,6 +1,6 @@
 {
   "name": "ghoneycutt-dnsclient",
-  "version": "3.5.2",
+  "version": "3.6.0",
   "author": "ghoneycutt",
   "summary": "Manage resolver",
   "license": "Apache-2.0",
