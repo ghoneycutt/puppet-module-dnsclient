@@ -16,6 +16,7 @@ class dnsclient                 (
   $resolver_config_file_owner  = 'root',
   $resolver_config_file_group  = 'root',
   $resolver_config_file_mode   = '0644',
+  $resolver_config_file_backup = undef,
 ) {
 
   # Validates domain
@@ -33,12 +34,25 @@ class dnsclient                 (
     }
   }
 
-  file { 'dnsclient_resolver_config_file':
-    ensure  => $resolver_config_file_ensure,
-    content => template('dnsclient/resolv.conf.erb'),
-    path    => $resolver_config_file,
-    owner   => $resolver_config_file_owner,
-    group   => $resolver_config_file_group,
-    mode    => $resolver_config_file_mode,
+  if $resolver_config_file_backup == undef {
+    file { 'dnsclient_resolver_config_file':
+      ensure  => $resolver_config_file_ensure,
+      content => template('dnsclient/resolv.conf.erb'),
+      path    => $resolver_config_file,
+      owner   => $resolver_config_file_owner,
+      group   => $resolver_config_file_group,
+      mode    => $resolver_config_file_mode,
+    }
+  }
+  else {
+    file { 'dnsclient_resolver_config_file':
+      ensure  => $resolver_config_file_ensure,
+      content => template('dnsclient/resolv.conf.erb'),
+      path    => $resolver_config_file,
+      owner   => $resolver_config_file_owner,
+      group   => $resolver_config_file_group,
+      mode    => $resolver_config_file_mode,
+      backup  => $resolver_config_file_backup,
+    }
   }
 }
