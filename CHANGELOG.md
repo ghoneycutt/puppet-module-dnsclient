@@ -6,6 +6,7 @@
 
 ### Merged Pull Requests
 
+- Modernize [\#40](https://github.com/ghoneycutt/puppet-module-dnsclient/pull/40) ([ghoneycutt](https://github.com/ghoneycutt))
 - Remove EOL Puppet Versions [\#39](https://github.com/ghoneycutt/puppet-module-dnsclient/pull/39) ([BuJo](https://github.com/BuJo))
 
 3.6.0 - 2018-12-08
