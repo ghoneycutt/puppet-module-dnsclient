@@ -1,33 +1,17 @@
 # This file is being maintained by Puppet.
 # DO NOT EDIT
-<% if @search[0] != 'UNSET' -%>
-<% if @search.class == String -%>
-search <%= @search %>
-<% else -%>
+<% if not @search.nil? -%>
 search <%= @search.join(' ') %>
 <% end -%>
-<% end -%>
-<% if @sortlist[0] != 'UNSET' -%>
-<% if @sortlist.class == String -%>
-sortlist <%= @sortlist %>
-<% else -%>
+<% if not @sortlist.nil? -%>
 sortlist <%= @sortlist.join(' ') %>
 <% end -%>
-<% end -%>
-<% if @domain != 'UNSET' and @search[0] == 'UNSET' -%>
+<% if not @domain.nil? -%>
 domain <%= @domain %>
 <% end -%>
-<% if @options != 'UNSET' -%>
-<% if @options.class == String -%>
-options <%= @options %>
-<% else -%>
+<% if not @options.empty? -%>
 options<% @options.each do |option| %> <%= option %><% end %>
 <% end -%>
-<% end -%>
-<% if @nameservers.class == String -%>
-nameserver <%= @nameservers %>
-<% else -%>
 <% @nameservers.each do |nameserver| -%>
 nameserver <%= nameserver %>
-<% end -%>
 <% end -%>
