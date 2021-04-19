@@ -30,16 +30,7 @@ nameserver 8.8.4.4
       { :nameservers => ['4.2.2.2', '4.2.2.1'] }
     end
 
-    it { should contain_class('dnsclient') }
-
     it {
-      should contain_file('dnsclient_resolver_config_file').with({
-        'ensure' => 'file',
-        'path'   => '/etc/resolv.conf',
-        'owner'  => 'root',
-        'group'  => 'root',
-        'mode'   => '0644',
-      })
       should contain_file('dnsclient_resolver_config_file').with_content(
 %{# This file is being maintained by Puppet.
 # DO NOT EDIT
@@ -50,21 +41,12 @@ nameserver 4.2.2.1
     }
   end
 
-  context 'with parameter nameservers set to a single nameserver as a string' do
+  context 'with parameter nameservers set to a single nameserver as an array' do
     let :params do
-      { :nameservers => '4.2.2.2' }
+      { :nameservers => ['4.2.2.2'] }
     end
 
-    it { should contain_class('dnsclient') }
-
     it {
-      should contain_file('dnsclient_resolver_config_file').with({
-        'ensure' => 'file',
-        'path'   => '/etc/resolv.conf',
-        'owner'  => 'root',
-        'group'  => 'root',
-        'mode'   => '0644',
-      })
       should contain_file('dnsclient_resolver_config_file').with_content(
 %{# This file is being maintained by Puppet.
 # DO NOT EDIT
@@ -76,19 +58,10 @@ nameserver 4.2.2.2
 
   context 'with no options' do
     let :params do
-      { :options => 'UNSET' }
+      { 'options' => [] }
     end
 
-    it { should contain_class('dnsclient') }
-
     it {
-      should contain_file('dnsclient_resolver_config_file').with({
-        'ensure' => 'file',
-        'path'   => '/etc/resolv.conf',
-        'owner'  => 'root',
-        'group'  => 'root',
-        'mode'   => '0644',
-      })
       should contain_file('dnsclient_resolver_config_file').with_content(
 %{# This file is being maintained by Puppet.
 # DO NOT EDIT
@@ -98,21 +71,12 @@ nameserver 8.8.4.4
     }
   end
 
-  context 'with options set to a single value' do
+  context 'with options set to a single value as an array' do
     let :params do
-      { :options => 'ndots:2' }
+      { :options => ['ndots:2'] }
     end
 
-    it { should contain_class('dnsclient') }
-
     it {
-      should contain_file('dnsclient_resolver_config_file').with({
-        'ensure' => 'file',
-        'path'   => '/etc/resolv.conf',
-        'owner'  => 'root',
-        'group'  => 'root',
-        'mode'   => '0644',
-      })
       should contain_file('dnsclient_resolver_config_file').with_content(
 %{# This file is being maintained by Puppet.
 # DO NOT EDIT
@@ -128,16 +92,7 @@ nameserver 8.8.4.4
       { :options => ['ndots:2', 'rotate'] }
     end
 
-    it { should contain_class('dnsclient') }
-
     it {
-      should contain_file('dnsclient_resolver_config_file').with({
-        'ensure' => 'file',
-        'path'   => '/etc/resolv.conf',
-        'owner'  => 'root',
-        'group'  => 'root',
-        'mode'   => '0644',
-      })
       should contain_file('dnsclient_resolver_config_file').with_content(
 %{# This file is being maintained by Puppet.
 # DO NOT EDIT
@@ -153,16 +108,7 @@ nameserver 8.8.4.4
       { :search => ['foo.example.tld', 'example.tld'] }
     end
 
-    it { should contain_class('dnsclient') }
-
     it {
-      should contain_file('dnsclient_resolver_config_file').with({
-        'ensure' => 'file',
-        'path'   => '/etc/resolv.conf',
-        'owner'  => 'root',
-        'group'  => 'root',
-        'mode'   => '0644',
-      })
       should contain_file('dnsclient_resolver_config_file').with_content(
 %{# This file is being maintained by Puppet.
 # DO NOT EDIT
@@ -174,21 +120,12 @@ nameserver 8.8.4.4
     }
   end
 
-  context 'with search set to a single value' do
+  context 'with search set to a single value as an array' do
     let :params do
-      { :search => 'example.tld' }
+      { :search => ['example.tld'] }
     end
 
-    it { should contain_class('dnsclient') }
-
     it {
-      should contain_file('dnsclient_resolver_config_file').with({
-        'ensure' => 'file',
-        'path'   => '/etc/resolv.conf',
-        'owner'  => 'root',
-        'group'  => 'root',
-        'mode'   => '0644',
-      })
       should contain_file('dnsclient_resolver_config_file').with_content(
 %{# This file is being maintained by Puppet.
 # DO NOT EDIT
@@ -208,25 +145,11 @@ nameserver 8.8.4.4
       }
     end
 
-    it { should contain_class('dnsclient') }
-
-    it {
-      should contain_file('dnsclient_resolver_config_file').with({
-        'ensure' => 'file',
-        'path'   => '/etc/resolv.conf',
-        'owner'  => 'root',
-        'group'  => 'root',
-        'mode'   => '0644',
-      })
-      should contain_file('dnsclient_resolver_config_file').with_content(
-%{# This file is being maintained by Puppet.
-# DO NOT EDIT
-search foo.example.tld example.tld
-options rotate timeout:1
-nameserver 8.8.8.8
-nameserver 8.8.4.4
-})
-    }
+    it 'should fail' do
+      expect {
+        should raise_error(Puppet::Error, /search and domain are mutually exclusive and both have been defined/)
+      }
+    end
   end
 
   context 'with domain set' do
@@ -234,16 +157,7 @@ nameserver 8.8.4.4
       { :domain => 'valid.tld' }
     end
 
-    it { should contain_class('dnsclient') }
-
     it {
-      should contain_file('dnsclient_resolver_config_file').with({
-        'ensure' => 'file',
-        'path'   => '/etc/resolv.conf',
-        'owner'  => 'root',
-        'group'  => 'root',
-        'mode'   => '0644',
-      })
       should contain_file('dnsclient_resolver_config_file').with_content(
 %{# This file is being maintained by Puppet.
 # DO NOT EDIT
@@ -259,20 +173,11 @@ nameserver 8.8.4.4
     let :params do
       {
         :domain  => 'valid.tld',
-        :options => 'UNSET',
+        :options => [],
       }
     end
 
-    it { should contain_class('dnsclient') }
-
     it {
-      should contain_file('dnsclient_resolver_config_file').with({
-        'ensure' => 'file',
-        'path'   => '/etc/resolv.conf',
-        'owner'  => 'root',
-        'group'  => 'root',
-        'mode'   => '0644',
-      })
       should contain_file('dnsclient_resolver_config_file').with_content(
 %{# This file is being maintained by Puppet.
 # DO NOT EDIT
@@ -285,7 +190,7 @@ nameserver 8.8.4.4
 
   context 'with search set to an invalid single value' do
     let :params do
-      { :search => '-notvalid.tld' }
+      { :search => ['-notvalid.tld'] }
     end
 
     it 'should fail' do
@@ -310,21 +215,12 @@ nameserver 8.8.4.4
   context 'with only search' do
     let :params do
       {
-        :search  => 'valid.tld',
-        :options => 'UNSET',
+        :search  => ['valid.tld'],
+        :options => [],
       }
     end
 
-    it { should contain_class('dnsclient') }
-
     it {
-      should contain_file('dnsclient_resolver_config_file').with({
-        'ensure' => 'file',
-        'path'   => '/etc/resolv.conf',
-        'owner'  => 'root',
-        'group'  => 'root',
-        'mode'   => '0644',
-      })
       should contain_file('dnsclient_resolver_config_file').with_content(
 %{# This file is being maintained by Puppet.
 # DO NOT EDIT
@@ -338,22 +234,13 @@ nameserver 8.8.4.4
   context 'with search and sortlist' do
     let :params do
       {
-        :search   => 'valid.tld',
+        :search   => ['valid.tld'],
         :sortlist => ['10.10.10.0/24', '10.10.11.0/24'],
-        :options  => 'UNSET',
+        :options  => [],
       }
     end
 
-    it { should contain_class('dnsclient') }
-
     it {
-      should contain_file('dnsclient_resolver_config_file').with({
-        'ensure' => 'file',
-        'path'   => '/etc/resolv.conf',
-        'owner'  => 'root',
-        'group'  => 'root',
-        'mode'   => '0644',
-      })
       should contain_file('dnsclient_resolver_config_file').with_content(
 %{# This file is being maintained by Puppet.
 # DO NOT EDIT
@@ -368,27 +255,19 @@ nameserver 8.8.4.4
   context 'with search, sortlist, and options' do
     let :params do
       {
-        :search   => 'valid.tld',
+        :search   => ['valid.tld'],
         :sortlist => ['10.10.10.0/24', '10.10.11.0/24'],
+        :options  => ['rotate'],
       }
     end
 
-    it { should contain_class('dnsclient') }
-
     it {
-      should contain_file('dnsclient_resolver_config_file').with({
-        'ensure' => 'file',
-        'path'   => '/etc/resolv.conf',
-        'owner'  => 'root',
-        'group'  => 'root',
-        'mode'   => '0644',
-      })
       should contain_file('dnsclient_resolver_config_file').with_content(
 %{# This file is being maintained by Puppet.
 # DO NOT EDIT
 search valid.tld
 sortlist 10.10.10.0/24 10.10.11.0/24
-options rotate timeout:1
+options rotate
 nameserver 8.8.8.8
 nameserver 8.8.4.4
 })
@@ -400,16 +279,7 @@ nameserver 8.8.4.4
       { :sortlist => ['10.10.10.0/24', '10.10.11.0/24'] }
     end
 
-    it { should contain_class('dnsclient') }
-
     it {
-      should contain_file('dnsclient_resolver_config_file').with({
-        'ensure' => 'file',
-        'path'   => '/etc/resolv.conf',
-        'owner'  => 'root',
-        'group'  => 'root',
-        'mode'   => '0644',
-      })
       should contain_file('dnsclient_resolver_config_file').with_content(
 %{# This file is being maintained by Puppet.
 # DO NOT EDIT
@@ -429,16 +299,7 @@ nameserver 8.8.4.4
       }
     end
 
-    it { should contain_class('dnsclient') }
-
     it {
-      should contain_file('dnsclient_resolver_config_file').with({
-        'ensure' => 'file',
-        'path'   => '/etc/resolv.conf',
-        'owner'  => 'root',
-        'group'  => 'root',
-        'mode'   => '0644',
-      })
       should contain_file('dnsclient_resolver_config_file').with_content(
 %{# This file is being maintained by Puppet.
 # DO NOT EDIT
@@ -456,20 +317,11 @@ nameserver 8.8.4.4
       {
         :sortlist => ['10.10.10.0/24', '10.10.11.0/24'],
         :domain   => 'valid.tld',
-        :options  => 'UNSET',
+        :options  => [],
       }
     end
 
-    it { should contain_class('dnsclient') }
-
     it {
-      should contain_file('dnsclient_resolver_config_file').with({
-        'ensure' => 'file',
-        'path'   => '/etc/resolv.conf',
-        'owner'  => 'root',
-        'group'  => 'root',
-        'mode'   => '0644',
-      })
       should contain_file('dnsclient_resolver_config_file').with_content(
 %{# This file is being maintained by Puppet.
 # DO NOT EDIT
@@ -481,21 +333,12 @@ nameserver 8.8.4.4
     }
   end
 
-  context 'with sortlist set to a single value' do
+  context 'with sortlist set to a single value as an array' do
     let :params do
-      { :sortlist => '10.10.10.0/24' }
+      { :sortlist => ['10.10.10.0/24'] }
     end
 
-    it { should contain_class('dnsclient') }
-
     it {
-      should contain_file('dnsclient_resolver_config_file').with({
-        'ensure' => 'file',
-        'path'   => '/etc/resolv.conf',
-        'owner'  => 'root',
-        'group'  => 'root',
-        'mode'   => '0644',
-      })
       should contain_file('dnsclient_resolver_config_file').with_content(
 %{# This file is being maintained by Puppet.
 # DO NOT EDIT
@@ -524,8 +367,6 @@ nameserver 8.8.4.4
       { :resolver_config_file_ensure => 'present' }
     end
 
-    it { should contain_class('dnsclient') }
-
     it {
       should contain_file('dnsclient_resolver_config_file').with({
         'ensure' => 'present',
@@ -534,13 +375,6 @@ nameserver 8.8.4.4
         'group'  => 'root',
         'mode'   => '0644',
       })
-      should contain_file('dnsclient_resolver_config_file').with_content(
-%{# This file is being maintained by Puppet.
-# DO NOT EDIT
-options rotate timeout:1
-nameserver 8.8.8.8
-nameserver 8.8.4.4
-})
     }
   end
 
@@ -548,8 +382,6 @@ nameserver 8.8.4.4
     let :params do
       { :resolver_config_file_ensure => 'absent' }
     end
-
-    it { should contain_class('dnsclient') }
 
     it {
       should contain_file('dnsclient_resolver_config_file').with({
@@ -563,8 +395,6 @@ nameserver 8.8.4.4
       { :resolver_config_file => '/tmp/resolv.conf' }
     end
 
-    it { should contain_class('dnsclient') }
-
     it {
       should contain_file('dnsclient_resolver_config_file').with({
         'path' => '/tmp/resolv.conf',
@@ -576,8 +406,6 @@ nameserver 8.8.4.4
     let :params do
       { :resolver_config_file_owner => 'foo' }
     end
-
-    it { should contain_class('dnsclient') }
 
     it {
       should contain_file('dnsclient_resolver_config_file').with({
@@ -591,8 +419,6 @@ nameserver 8.8.4.4
       { :resolver_config_file_group => 'bar' }
     end
 
-    it { should contain_class('dnsclient') }
-
     it {
       should contain_file('dnsclient_resolver_config_file').with({
         'group' => 'bar',
@@ -604,8 +430,6 @@ nameserver 8.8.4.4
     let :params do
       { :resolver_config_file_mode => '0777' }
     end
-
-    it { should contain_class('dnsclient') }
 
     it {
       should contain_file('dnsclient_resolver_config_file').with({
