@@ -52,6 +52,7 @@ module aims to support the current and previous major Puppet versions.
  * EL 5
  * EL 6
  * EL 7
+ * EL 8
  * Debian 6
  * SLES 10
  * SLES 11
