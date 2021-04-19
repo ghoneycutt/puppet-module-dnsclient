@@ -38,6 +38,14 @@
       ]
     },
     {
+      "operatingsystem": "OpenBSD",
+      "operatingsystemrelease": [
+        "5.4",
+        "5.6",
+        "5.7"
+      ]
+    },
+    {
       "operatingsystem": "OracleLinux",
       "operatingsystemrelease": [
         "5",

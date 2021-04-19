@@ -11,6 +11,7 @@ class dnsclient                 (
   $search                      = ['UNSET'],
   $domain                      = 'UNSET',
   $sortlist                    = ['UNSET'],
+  $lookup                      = ['UNSET'],
   $resolver_config_file        = '/etc/resolv.conf',
   $resolver_config_file_ensure = 'file',
   $resolver_config_file_owner  = 'root',
@@ -21,6 +22,15 @@ class dnsclient                 (
   # Validates domain
   if is_domain_name($domain) != true {
     fail("Domain name, ${domain}, is invalid.")
+  }
+
+  # Validate lookup value
+  if (is_array($lookup) != true) and ($::operatingsystem == 'OpenBSD') {
+    fail('the dnsclient::lookup parameter needs to be an array of strings.')
+  }
+
+  if ($lookup != ['UNSET']) and ($::operatingsystem != 'OpenBSD') {
+    fail("the dnsclient::lookup parameter is only supported on OpenBSD. Detected operatingsystem is ${::operatingsystem}.")
   }
 
   # Validates $resolver_config_file_ensure
