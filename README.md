@@ -11,8 +11,8 @@ code with no modifications to the module itself as a guiding principle.
 # Compatibility #
 
 This module has been tested to work on the following systems with the
-latest Puppet v6.  See `.travis.yml` for the exact matrix of supported
-Puppet and ruby versions.
+latest Puppet v6 and v7.  See `.travis.yml` for the exact matrix of
+supported Puppet and ruby versions.
 
  * EL 5
  * EL 6
