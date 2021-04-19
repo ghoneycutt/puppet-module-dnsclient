@@ -57,18 +57,61 @@
         <div class="clear"></div>
       </div>
 
-      <div id="content"><div id='filecontents'><h1 id="dnsclient-module">dnsclient module</h1>
+      <div id="content"><div id='filecontents'><h1 id="puppet-module-dnsclient">puppet-module-dnsclient</h1>
 
-<p><a href="https://travis-ci.org/ghoneycutt/puppet-module-dnsclient"><img src="https://travis-ci.org/ghoneycutt/puppet-module-dnsclient.png?branch=master" alt="Build Status"></a></p>
+<h4 id="table-of-contents">Table of Contents</h4>
+
+<ol>
+<li><a href="#module-description">Module Description - What the module does and why it is useful</a></li>
+<li><a href="#setup">Setup - The basics of getting started with dnsclient</a>
+
+<ul>
+<li><a href="#what-dnsclient-affects">What dnsclient affects</a></li>
+<li><a href="#setup-requirements">Setup requirements</a></li>
+<li><a href="#beginning-with-dnsclient">Beginning with dnsclient</a></li>
+</ul></li>
+<li><a href="#usage">Usage - Configuration options and additional functionality</a></li>
+<li><a href="#limitations">Limitations - OS compatibility, etc.</a></li>
+<li><a href="#development">Development - Guide for contributing to the module</a></li>
+</ol>
+
+<h2 id="module-description">Module description</h2>
 
 <p>This module manages <code>/etc/resolv.conf</code> and its various options. It is
-feature complete.</p>
+feature complete for the supported platforms.</p>
 
-<h1 id="compatibility">Compatibility</h1>
+<p><a href="http://ghoneycutt.github.io/puppet-module-dnsclient/">Documented with puppet-strings</a></p>
 
-<p>This module has been tested to work on the following systems with the
-latest Puppet v6 and v7.  See <code>.travis.yml</code> for the exact matrix of
-supported Puppet and ruby versions.</p>
+<h2 id="setup">Setup</h2>
+
+<h3 id="what-dnsclient-affects">What dnsclient affects</h3>
+
+<p>Manages the system resolver, <code>/etc/resolv.conf</code>.</p>
+
+<h3 id="setup-requirements">Setup requirements</h3>
+
+<p>This module requires <code>stdlib</code>.</p>
+
+<h3 id="beginning-with-dnsclient">Beginning with dnsclient</h3>
+
+<p>Include the <code>dnsclient</code> class and it will configure the resolver to use
+Google&#39;s public name servers.</p>
+
+<h2 id="usage">Usage</h2>
+
+<p>Minimal and normal usage. See the
+<a href="https://github.com/ghoneycutt/puppet-module-dnsclient/tree/master/examples">examples</a>
+directory for more usage examples.</p>
+
+<pre class="code puppet"><code class="puppet">include dnsclient
+</code></pre>
+
+<h2 id="limitations">Limitations</h2>
+
+<p>This module has been tested to work on the following systems with Puppet
+versions 6 and 7 with the Ruby version associated with those releases.
+Please see <code>.travis.yml</code> for a full matrix of supported versions. This
+module aims to support the current and previous major Puppet versions.</p>
 
 <ul>
 <li>EL 5</li>
@@ -81,6 +124,11 @@ supported Puppet and ruby versions.</p>
 <li>Ubuntu 10.04 LTS (Lucid Lynx)</li>
 <li>Ubuntu 12.04 LTS (Precise Pangolin)</li>
 </ul>
+
+<h2 id="development">Development</h2>
+
+<p>See <code>CONTRIBUTING.md</code> for information related to the development of this
+module.</p>
 </div></div>
 
       <div id="footer">
