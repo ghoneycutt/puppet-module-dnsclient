@@ -1,18 +1,53 @@
-# dnsclient module #
+# puppet-module-dnsclient
 
-[![Build Status](https://travis-ci.org/ghoneycutt/puppet-module-dnsclient.png?branch=master)](https://travis-ci.org/ghoneycutt/puppet-module-dnsclient)
+#### Table of Contents
 
-This module manages /etc/resolv.conf and its various options.
+1. [Module Description - What the module does and why it is useful](#module-description)
+1. [Setup - The basics of getting started with dnsclient](#setup)
+   * [What dnsclient affects](#what-dnsclient-affects)
+   * [Setup requirements](#setup-requirements)
+   * [Beginning with dnsclient](#beginning-with-dnsclient)
+1. [Usage - Configuration options and additional functionality](#usage)
+1. [Limitations - OS compatibility, etc.](#limitations)
+1. [Development - Guide for contributing to the module](#development)
 
-It makes use of Hiera (http://github.com/puppetlabs/hiera) and demonstrates a
-new design pattern in module development that allows for totally data driven
-code with no modifications to the module itself as a guiding principle.
+## Module description
 
-# Compatibility #
+This module manages `/etc/resolv.conf` and its various options. It is
+feature complete for the supported platforms.
 
-This module has been tested to work on the following systems with the
-latest Puppet v6 and v7.  See `.travis.yml` for the exact matrix of
-supported Puppet and ruby versions.
+[Documented with puppet-strings](http://ghoneycutt.github.io/puppet-module-dnsclient/)
+
+## Setup
+
+### What dnsclient affects
+
+Manages the system resolver, `/etc/resolv.conf`.
+
+### Setup requirements
+This module requires `stdlib`.
+
+### Beginning with dnsclient
+
+Include the `dnsclient` class and it will configure the resolver to use
+Google's public name servers.
+
+## Usage
+
+Minimal and normal usage. See the
+[examples](https://github.com/ghoneycutt/puppet-module-dnsclient/tree/master/examples)
+directory for more usage examples.
+
+```puppet
+include dnsclient
+```
+
+## Limitations
+
+This module has been tested to work on the following systems with Puppet
+versions 6 and 7 with the Ruby version associated with those releases.
+Please see `.travis.yml` for a full matrix of supported versions. This
+module aims to support the current and previous major Puppet versions.
 
  * EL 5
  * EL 6
@@ -24,71 +59,7 @@ supported Puppet and ruby versions.
  * Ubuntu 10.04 LTS (Lucid Lynx)
  * Ubuntu 12.04 LTS (Precise Pangolin)
 
-# Parameters #
+## Development
 
-See RESOLV.CONF(5) for more information regarding /etc/resolv.conf settings
-
-
-nameservers
------------
-Array of name servers.
-
-- *Default*: Google's public name servers
-
-options
--------
-Array of options.
-
-- *Default*: 'rotate' and 'timeout:1'
-
-search
-------
-Array of domains for search list. This is mutually exclusive with **domain**. If both are set, search will be used and domain will be ignored.
-
-- *Default*: none
-
-domain
-------
-Domain setting. See **search**.
-
-- *Default*: none
-
-sortlist
---------
-Array of sortlist addresses.
-
-- *Default*: none
-
-resolver_config_file
---------------------
-Path to resolv.conf.
-
-- *Default*: '/etc/resolv.conf'
-
-resolver_config_file_ensure
----------------------------
-ensure attribute for file resource. Valid values are 'file', 'present' and 'absent'.
-
-- *Default*: file
-
-resolver_config_file_owner
---------------------------
-resolv.conf's owner.
-
-- *Default*: 'root'
-
-
-resolver_config_file_group
---------------------------
-resolv.conf's group.
-
-- *Default*: 'root'
-
-
-resolver_config_file_mode
--------------------------
-resolv.conf's mode.
-
-- *Default*: '0644'
-
-
+See `CONTRIBUTING.md` for information related to the development of this
+module.
