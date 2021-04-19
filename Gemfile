@@ -21,18 +21,7 @@ gem 'puppet-lint-undef_in_function-check', :require => false
 gem 'puppet-lint-unquoted_string-check', :require => false
 gem 'puppet-lint-variable_contains_upcase', :require => false
 
-gem 'rspec',     '~> 2.0', :require => false          if RUBY_VERSION >= '1.8.7' && RUBY_VERSION < '1.9'
-gem 'rake',      '~> 10.0', :require => false         if RUBY_VERSION >= '1.8.7' && RUBY_VERSION < '1.9'
-gem 'json',      '<= 1.8', :require => false          if RUBY_VERSION < '2.0.0'
-gem 'json_pure', '<= 2.0.1', :require => false        if RUBY_VERSION < '2.0.0'
-gem 'metadata-json-lint',     '0.0.11'   if RUBY_VERSION >= '1.8.7' && RUBY_VERSION < '1.9'
-gem 'metadata-json-lint',     '1.0.0'    if RUBY_VERSION >= '1.9' && RUBY_VERSION < '2.0'
-gem 'metadata-json-lint' if RUBY_VERSION >= '2.0'
+gem 'metadata-json-lint'
 
-gem 'puppetlabs_spec_helper', '2.0.2',    :require => false if RUBY_VERSION >= '1.8.7' && RUBY_VERSION < '1.9'
-gem 'puppetlabs_spec_helper', '>= 2.0.0', :require => false if RUBY_VERSION >= '1.9'
-gem 'parallel_tests',         '<= 2.9.0', :require => false if RUBY_VERSION < '2.0.0'
-
-if puppetversion && puppetversion < '5.0'
-  gem 'semantic_puppet', :require => false
-end
+gem 'puppetlabs_spec_helper', '>= 2.0.0', :require => false
+gem 'parallel_tests',         '<= 2.9.0', :require => false
