@@ -6,7 +6,7 @@
 <title>
   File: README
   
-    &mdash; Documentation by YARD 0.9.26
+    &mdash; Documentation by YARD 0.9.28
   
 </title>
 
@@ -57,79 +57,83 @@
         <div class="clear"></div>
       </div>
 
-      <div id="content"><div id='filecontents'><h1 id="puppet-module-dnsclient">puppet-module-dnsclient</h1>
+      <div id="content"><div id='filecontents'>
+<h1 id="label-puppet-module-dnsclient">puppet-module-dnsclient</h1>
 
-<h4 id="table-of-contents">Table of Contents</h4>
+<h4 id="label-Table+of+Contents">Table of Contents</h4>
+<ol><li>
+<p><a href="#module-description">Module Description - What the module does and why it is useful</a></p>
+</li><li>
+<p><a href="#setup">Setup - The basics of getting started with dnsclient</a></p>
+</li><li>
+<p><a href="#what-dnsclient-affects">What dnsclient affects</a></p>
+</li><li>
+<p><a href="#setup-requirements">Setup requirements</a></p>
+</li><li>
+<p><a href="#beginning-with-dnsclient">Beginning with dnsclient</a></p>
+</li><li>
+<p><a href="#usage">Usage - Configuration options and additional functionality</a></p>
+</li><li>
+<p><a href="#limitations">Limitations - OS compatibility, etc.</a></p>
+</li><li>
+<p><a href="#development">Development - Guide for contributing to the module</a></p>
+</li></ol>
 
-<ol>
-<li><a href="#module-description">Module Description - What the module does and why it is useful</a></li>
-<li><a href="#setup">Setup - The basics of getting started with dnsclient</a>
+<h2 id="label-Module+description">Module description</h2>
 
-<ul>
-<li><a href="#what-dnsclient-affects">What dnsclient affects</a></li>
-<li><a href="#setup-requirements">Setup requirements</a></li>
-<li><a href="#beginning-with-dnsclient">Beginning with dnsclient</a></li>
-</ul></li>
-<li><a href="#usage">Usage - Configuration options and additional functionality</a></li>
-<li><a href="#limitations">Limitations - OS compatibility, etc.</a></li>
-<li><a href="#development">Development - Guide for contributing to the module</a></li>
-</ol>
-
-<h2 id="module-description">Module description</h2>
-
-<p>This module manages <code>/etc/resolv.conf</code> and its various options. It is
-feature complete for the supported platforms.</p>
+<p>This module manages <code>/etc/resolv.conf</code> and its various options. It is feature complete for the supported platforms.</p>
 
 <p><a href="http://ghoneycutt.github.io/puppet-module-dnsclient/">Documented with puppet-strings</a></p>
 
-<h2 id="setup">Setup</h2>
+<h2 id="label-Setup">Setup</h2>
 
-<h3 id="what-dnsclient-affects">What dnsclient affects</h3>
+<h3 id="label-What+dnsclient+affects">What dnsclient affects</h3>
 
 <p>Manages the system resolver, <code>/etc/resolv.conf</code>.</p>
 
-<h3 id="setup-requirements">Setup requirements</h3>
+<h3 id="label-Setup+requirements">Setup requirements</h3>
 
 <p>This module requires <code>stdlib</code>.</p>
 
-<h3 id="beginning-with-dnsclient">Beginning with dnsclient</h3>
+<h3 id="label-Beginning+with+dnsclient">Beginning with dnsclient</h3>
 
-<p>Include the <code>dnsclient</code> class and it will configure the resolver to use
-Google&#39;s public name servers.</p>
+<p>Include the <code>dnsclient</code> class and it will configure the resolver to use Google&#39;s public name servers.</p>
 
-<h2 id="usage">Usage</h2>
+<h2 id="label-Usage">Usage</h2>
 
-<p>Minimal and normal usage. See the
-<a href="https://github.com/ghoneycutt/puppet-module-dnsclient/tree/master/examples">examples</a>
-directory for more usage examples.</p>
+<p>Minimal and normal usage. See the <a href="https://github.com/ghoneycutt/puppet-module-dnsclient/tree/master/examples">examples</a> directory for more usage examples.</p>
 
-<pre class="code puppet"><code class="puppet">include dnsclient
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_include'>include</span> <span class='id identifier rubyid_dnsclient'>dnsclient</span>
 </code></pre>
 
-<h2 id="limitations">Limitations</h2>
+<h2 id="label-Limitations">Limitations</h2>
 
-<p>This module has been tested to work on the following systems with Puppet
-versions 6 and 7 with the Ruby version associated with those releases.
-Please see <code>.travis.yml</code> for a full matrix of supported versions. This
-module aims to support the current and previous major Puppet versions.</p>
+<p>This module has been tested to work on the following systems with Puppet versions 6 and 7 with the Ruby version associated with those releases. Please see <code>.travis.yml</code> for a full matrix of supported versions. This module aims to support the current and previous major Puppet versions.</p>
+<ul><li>
+<p>EL 5</p>
+</li><li>
+<p>EL 6</p>
+</li><li>
+<p>EL 7</p>
+</li><li>
+<p>EL 8</p>
+</li><li>
+<p>Debian 6</p>
+</li><li>
+<p>SLES 10</p>
+</li><li>
+<p>SLES 11</p>
+</li><li>
+<p>Solaris 10</p>
+</li><li>
+<p>Ubuntu 10.04 LTS (Lucid Lynx)</p>
+</li><li>
+<p>Ubuntu 12.04 LTS (Precise Pangolin)</p>
+</li></ul>
 
-<ul>
-<li>EL 5</li>
-<li>EL 6</li>
-<li>EL 7</li>
-<li>EL 8</li>
-<li>Debian 6</li>
-<li>SLES 10</li>
-<li>SLES 11</li>
-<li>Solaris 10</li>
-<li>Ubuntu 10.04 LTS (Lucid Lynx)</li>
-<li>Ubuntu 12.04 LTS (Precise Pangolin)</li>
-</ul>
+<h2 id="label-Development">Development</h2>
 
-<h2 id="development">Development</h2>
-
-<p>See <code>CONTRIBUTING.md</code> for information related to the development of this
-module.</p>
+<p>See <code>CONTRIBUTING.md</code> for information related to the development of this module.</p>
 </div></div>
 
       <div id="footer">
