@@ -1,4 +1,4 @@
-# puppet-module-dnsclient
+# dnsclient
 
 #### Table of Contents
 
@@ -25,6 +25,7 @@ feature complete for the supported platforms.
 Manages the system resolver, `/etc/resolv.conf`.
 
 ### Setup requirements
+
 This module requires `stdlib`.
 
 ### Beginning with dnsclient
@@ -44,23 +45,15 @@ include dnsclient
 
 ## Limitations
 
-This module has been tested to work on the following systems with Puppet
-versions 6 and 7 with the Ruby version associated with those releases.
-Please see `.travis.yml` for a full matrix of supported versions. This
-module aims to support the current and previous major Puppet versions.
-
- * EL 5
- * EL 6
- * EL 7
- * EL 8
- * Debian 6
- * SLES 10
- * SLES 11
- * Solaris 10
- * Ubuntu 10.04 LTS (Lucid Lynx)
- * Ubuntu 12.04 LTS (Precise Pangolin)
+This module officially supports the platforms listed in the
+`metadata.json`. It does not fail on unsupported platforms and has been
+known to work on many, many platforms since its creation in 2010 and
+should work with any unix based platform that uses `/etc/resolv.conf`.
 
 ## Development
 
-See `CONTRIBUTING.md` for information related to the development of this
-module.
+See [CONTRIBUTING.md](CONTRIBUTING.md)
+
+## License
+
+See [LICENSE](LICENSE) file.
