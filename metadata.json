@@ -7,53 +7,22 @@
   "source": "git://github.com/ghoneycutt/puppet-module-dnsclient.git",
   "project_page": "https://github.com/ghoneycutt/puppet-module-dnsclient/",
   "issues_url": "https://github.com/ghoneycutt/puppet-module-dnsclient/issues",
-  "description": "Manage a DNS client's resolver",
-  "requirements": [
-    {"name":"puppet","version_requirement":">= 6.0.0 < 8.0.0"}
-  ],
   "dependencies": [
-    {"name":"puppetlabs/stdlib","version_requirement":">= 6.0.0 < 8.0.0"}
+    {
+      "name": "puppetlabs/stdlib",
+      "version_requirement": ">= 8.0.0 < 9.0.0"
+    }
   ],
   "operatingsystem_support": [
     {
       "operatingsystem": "Debian",
       "operatingsystemrelease": [
-        "6"
+        "10"
       ]
     },
     {
       "operatingsystem": "RedHat",
       "operatingsystemrelease": [
-        "5",
-        "6",
-        "7",
-        "8"
-      ]
-    },
-    {
-      "operatingsystem": "CentOS",
-      "operatingsystemrelease": [
-        "5",
-        "6",
-        "7",
-        "8"
-      ]
-    },
-    {
-      "operatingsystem": "OracleLinux",
-      "operatingsystemrelease": [
-        "5",
-        "6",
-        "7",
-        "8"
-      ]
-    },
-    {
-      "operatingsystem": "Scientific",
-      "operatingsystemrelease": [
-        "5",
-        "6",
-        "7",
         "8"
       ]
     },
@@ -64,17 +33,21 @@
       ]
     },
     {
-      "operatingsystem": "SLES"
-    },
-    {
-      "operatingsystem": "SLED"
-    },
-    {
       "operatingsystem": "Ubuntu",
       "operatingsystemrelease": [
-        "10.04",
-        "12.04"
+        "18.04",
+        "20.04"
       ]
     }
-  ]
+  ],
+  "requirements": [
+    {
+      "name": "puppet",
+      "version_requirement": ">= 7.0.0 < 8.0.0"
+    }
+  ],
+  "description": "Manage a DNS client's resolver",
+  "pdk-version": "2.5.0",
+  "template-url": "https://github.com/tailored-automation/pdk-templates#main",
+  "template-ref": "heads/main-0-g37b4517"
 }
