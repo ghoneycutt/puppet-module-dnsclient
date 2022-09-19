@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/) and this project adheres to [Semantic Versioning](http://semver.org).
 
+## [v5.0.0](https://github.com/ghoneycutt/puppet-module-dnsclient/tree/v5.0.0) (2022-09-19)
+
+[Full Changelog](https://github.com/ghoneycutt/puppet-module-dnsclient/compare/v4.1.0...v5.0.0)
+
+### UNCATEGORIZED PRS; LABEL THEM ON GITHUB
+
+- Support Puppet 7 and use PDK [\#42](https://github.com/ghoneycutt/puppet-module-dnsclient/pull/42) ([ghoneycutt](https://github.com/ghoneycutt))
+
 ## [v4.1.0](https://github.com/ghoneycutt/puppet-module-dnsclient/tree/v4.1.0) (2021-04-19)
 
 [Full Changelog](https://github.com/ghoneycutt/puppet-module-dnsclient/compare/v4.0.0...v4.1.0)
