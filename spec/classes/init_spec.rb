@@ -50,6 +50,49 @@ describe 'dnsclient' do
     }
   end
 
+  context 'with parameter nameservers set with 5 nameservers' do
+    let :params do
+      { nameservers: ['4.2.2.2', '4.2.2.1', '1.1.1.1', '8.8.8.8', '8.8.4.4'] }
+    end
+
+    content = <<-END.gsub(%r{^\s+\|}, '')
+      |# This file is being maintained by Puppet.
+      |# DO NOT EDIT
+      |options rotate timeout:1
+      |nameserver 4.2.2.2
+      |nameserver 4.2.2.1
+      |nameserver 1.1.1.1
+      |nameserver 8.8.8.8
+      |nameserver 8.8.4.4
+    END
+
+    it {
+      is_expected.to contain_file('dnsclient_resolver_config_file').with_content(content)
+    }
+  end
+
+  context 'with parameter nameservers set with 5 nameservers and a limit of 3' do
+    let :params do
+      {
+        nameservers: ['4.2.2.2', '4.2.2.1', '1.1.1.1', '8.8.8.8', '8.8.4.4'],
+        nameserver_limit: 3,
+      }
+    end
+
+    content = <<-END.gsub(%r{^\s+\|}, '')
+      |# This file is being maintained by Puppet.
+      |# DO NOT EDIT
+      |options rotate timeout:1
+      |nameserver 4.2.2.2
+      |nameserver 4.2.2.1
+      |nameserver 1.1.1.1
+    END
+
+    it {
+      is_expected.to contain_file('dnsclient_resolver_config_file').with_content(content)
+    }
+  end
+
   context 'with parameter nameservers set to a single nameserver as an array' do
     let :params do
       { nameservers: ['4.2.2.2'] }
