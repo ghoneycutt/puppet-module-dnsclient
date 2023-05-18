@@ -49,6 +49,10 @@ class dnsclient (
     fail('search and domain are mutually exclusive and both have been defined.')
   }
 
+  # Only 3 nameservers are generally allowed by resolv.conf, so lets ensure that
+  # (While letting people do interesting hiera things to generate nameserver lists)
+  $nameservers_slice = $nameservers[0,3]
+
   file { 'dnsclient_resolver_config_file':
     ensure  => $resolver_config_file_ensure,
     content => template('dnsclient/resolv.conf.erb'),
