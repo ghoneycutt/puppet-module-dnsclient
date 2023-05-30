@@ -5,6 +5,9 @@
 # @param nameservers
 #   Array of nameservers. The default use Google's public name servers.
 #
+# @param nameserver_limit
+#   Integer of the number of nameservers to allow in the resolv.conf
+#
 # @param options
 #   Array of options. Set to `[]` if no options line should be present.
 #
@@ -34,6 +37,7 @@
 #
 class dnsclient (
   Array[Stdlib::IP::Address] $nameservers = ['8.8.8.8', '8.8.4.4'],
+  Integer[0] $nameserver_limit = 0,
   Array $options = ['rotate', 'timeout:1'],
   Optional[Array[String[1]]] $search = undef,
   Optional[Stdlib::Fqdn] $domain = undef,
@@ -50,8 +54,12 @@ class dnsclient (
   }
 
   # Only 3 nameservers are generally allowed by resolv.conf, so lets ensure that
-  # (While letting people do interesting hiera things to generate nameserver lists)
-  $nameservers_slice = $nameservers[0,3]
+  # (While letting people do interesting things in hiera to generate nameserver lists)
+  # Also provide a way to override
+  $nameservers_slice = $nameserver_limit ? {
+    0       => $nameservers,
+    default => $nameservers[0,$nameserver_limit],
+  }
 
   file { 'dnsclient_resolver_config_file':
     ensure  => $resolver_config_file_ensure,
