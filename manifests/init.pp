@@ -22,6 +22,9 @@
 # @param sortlist
 #   Optional array of sortlist entries
 #
+# @param custom_lines
+#  Array of lines that will be added to the end of /etc/resolv.conf
+#
 # @param resolver_config_file
 #   Path to resolv.conf
 #
@@ -47,6 +50,7 @@ class dnsclient (
   Optional[Array[String[1]]] $search = undef,
   Optional[Stdlib::Fqdn] $domain = undef,
   Optional[Array[String[1]]] $sortlist = undef,
+  Array[String[1]] $custom_lines = [],
   Stdlib::Absolutepath $resolver_config_file = '/etc/resolv.conf',
   String[1] $resolver_config_file_ensure = 'file',
   String[1] $resolver_config_file_owner = 'root',
