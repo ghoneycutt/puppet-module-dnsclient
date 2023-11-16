@@ -12,6 +12,6 @@ domain <%= @domain %>
 <% if not @options.empty? -%>
 options<% @options.each do |option| %> <%= option %><% end %>
 <% end -%>
-<% @nameservers.each do |nameserver| -%>
+<% @nameservers_slice.each do |nameserver| -%>
 nameserver <%= nameserver %>
 <% end -%>
