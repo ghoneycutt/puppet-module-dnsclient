@@ -15,3 +15,6 @@ options<% @options.each do |option| %> <%= option %><% end %>
 <% @nameservers_slice.each do |nameserver| -%>
 nameserver <%= nameserver %>
 <% end -%>
+<% @custom_lines.each do |custom_line| -%>
+<%= custom_line %>
+<% end -%>

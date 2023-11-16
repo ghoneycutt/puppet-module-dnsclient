@@ -433,6 +433,26 @@ describe 'dnsclient' do
     }
   end
 
+  context 'with custom_lines defined' do
+    let :params do
+      { custom_lines: ['foo', 'bar'] }
+    end
+
+    content = <<-END.gsub(%r{^\s+\|}, '')
+      |# This file is being maintained by Puppet.
+      |# DO NOT EDIT
+      |options rotate timeout:1
+      |nameserver 8.8.8.8
+      |nameserver 8.8.4.4
+      |foo
+      |bar
+    END
+
+    it {
+      is_expected.to contain_file('dnsclient_resolver_config_file').with_content(content)
+    }
+  end
+
   context 'with parameter resolver_config_file_ensure not set to \'file\' \'present\' or \'absent\'' do
     let :params do
       { resolver_config_file_ensure: 'invalid' }
