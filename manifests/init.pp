@@ -37,6 +37,9 @@
 # @param resolver_config_file_mode
 #   Mode of /etc/resolv.conf in octal format
 #
+# @param resolver_config_backup
+#  Sets the 'backup' parameter for /etc/resolv.conf
+#
 class dnsclient (
   Array[Stdlib::IP::Address] $nameservers = ['8.8.8.8', '8.8.4.4'],
   Optional[Integer[0]] $nameserver_limit = undef,
@@ -49,6 +52,7 @@ class dnsclient (
   String[1] $resolver_config_file_owner = 'root',
   String[1] $resolver_config_file_group = 'root',
   Stdlib::Filemode $resolver_config_file_mode = '0644',
+  Optional[Variant[Boolean, String[1]]] $resolver_config_backup = undef,
 ) {
 
   if $search and $domain {
@@ -71,5 +75,6 @@ class dnsclient (
     owner   => $resolver_config_file_owner,
     group   => $resolver_config_file_group,
     mode    => $resolver_config_file_mode,
+    backup  => $resolver_config_backup,
   }
 }

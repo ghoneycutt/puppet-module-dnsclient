@@ -15,6 +15,7 @@ describe 'dnsclient' do
           'owner'  => 'root',
           'group'  => 'root',
           'mode'   => '0644',
+          'backup' => nil,
         })
       }
 
@@ -518,5 +519,13 @@ describe 'dnsclient' do
         'mode' => '0777',
       })
     }
+  end
+
+  context 'with parameter resolver_config_backup set' do
+    let :params do
+      { resolver_config_backup: false }
+    end
+
+    it { is_expected.to contain_file('dnsclient_resolver_config_file').with_backup(false) }
   end
 end
