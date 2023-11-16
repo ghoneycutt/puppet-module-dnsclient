@@ -18,18 +18,21 @@ This module manages `/etc/resolv.conf`.
 
 The following parameters are available in the `dnsclient` class:
 
-* [`nameservers`](#nameservers)
-* [`options`](#options)
-* [`search`](#search)
-* [`domain`](#domain)
-* [`sortlist`](#sortlist)
-* [`resolver_config_file`](#resolver_config_file)
-* [`resolver_config_file_ensure`](#resolver_config_file_ensure)
-* [`resolver_config_file_owner`](#resolver_config_file_owner)
-* [`resolver_config_file_group`](#resolver_config_file_group)
-* [`resolver_config_file_mode`](#resolver_config_file_mode)
+* [`nameservers`](#-dnsclient--nameservers)
+* [`nameserver_limit`](#-dnsclient--nameserver_limit)
+* [`options`](#-dnsclient--options)
+* [`search`](#-dnsclient--search)
+* [`domain`](#-dnsclient--domain)
+* [`sortlist`](#-dnsclient--sortlist)
+* [`custom_lines`](#-dnsclient--custom_lines)
+* [`resolver_config_file`](#-dnsclient--resolver_config_file)
+* [`resolver_config_file_ensure`](#-dnsclient--resolver_config_file_ensure)
+* [`resolver_config_file_owner`](#-dnsclient--resolver_config_file_owner)
+* [`resolver_config_file_group`](#-dnsclient--resolver_config_file_group)
+* [`resolver_config_file_mode`](#-dnsclient--resolver_config_file_mode)
+* [`resolver_config_backup`](#-dnsclient--resolver_config_backup)
 
-##### <a name="nameservers"></a>`nameservers`
+##### <a name="-dnsclient--nameservers"></a>`nameservers`
 
 Data type: `Array[Stdlib::IP::Address]`
 
@@ -37,7 +40,17 @@ Array of nameservers. The default use Google's public name servers.
 
 Default value: `['8.8.8.8', '8.8.4.4']`
 
-##### <a name="options"></a>`options`
+##### <a name="-dnsclient--nameserver_limit"></a>`nameserver_limit`
+
+Data type: `Optional[Integer[0]]`
+
+Integer of the number of nameservers to allow in the resolv.conf
+NOTE: If 'nameservers' is over this limit, only the first X nameservers will be used where X is set by this limit.
+      The nameservers over the limit will be discarded.
+
+Default value: `undef`
+
+##### <a name="-dnsclient--options"></a>`options`
 
 Data type: `Array`
 
@@ -45,31 +58,39 @@ Array of options. Set to `[]` if no options line should be present.
 
 Default value: `['rotate', 'timeout:1']`
 
-##### <a name="search"></a>`search`
+##### <a name="-dnsclient--search"></a>`search`
 
 Data type: `Optional[Array[String[1]]]`
 
 Optional array of domains for search list. This is mutually exclusive with `domain`.
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="domain"></a>`domain`
+##### <a name="-dnsclient--domain"></a>`domain`
 
 Data type: `Optional[Stdlib::Fqdn]`
 
 Optional domain setting. This is mutually exclusive with `search`.
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="sortlist"></a>`sortlist`
+##### <a name="-dnsclient--sortlist"></a>`sortlist`
 
 Data type: `Optional[Array[String[1]]]`
 
 Optional array of sortlist entries
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="resolver_config_file"></a>`resolver_config_file`
+##### <a name="-dnsclient--custom_lines"></a>`custom_lines`
+
+Data type: `Array[String[1]]`
+
+Array of lines that will be added to the end of /etc/resolv.conf
+
+Default value: `[]`
+
+##### <a name="-dnsclient--resolver_config_file"></a>`resolver_config_file`
 
 Data type: `Stdlib::Absolutepath`
 
@@ -77,7 +98,7 @@ Path to resolv.conf
 
 Default value: `'/etc/resolv.conf'`
 
-##### <a name="resolver_config_file_ensure"></a>`resolver_config_file_ensure`
+##### <a name="-dnsclient--resolver_config_file_ensure"></a>`resolver_config_file_ensure`
 
 Data type: `String[1]`
 
@@ -85,7 +106,7 @@ Value of ensure attribute for the /etc/resolv.conf file resource
 
 Default value: `'file'`
 
-##### <a name="resolver_config_file_owner"></a>`resolver_config_file_owner`
+##### <a name="-dnsclient--resolver_config_file_owner"></a>`resolver_config_file_owner`
 
 Data type: `String[1]`
 
@@ -93,7 +114,7 @@ User of /etc/resolv.conf
 
 Default value: `'root'`
 
-##### <a name="resolver_config_file_group"></a>`resolver_config_file_group`
+##### <a name="-dnsclient--resolver_config_file_group"></a>`resolver_config_file_group`
 
 Data type: `String[1]`
 
@@ -101,11 +122,19 @@ Group of /etc/resolv.conf
 
 Default value: `'root'`
 
-##### <a name="resolver_config_file_mode"></a>`resolver_config_file_mode`
+##### <a name="-dnsclient--resolver_config_file_mode"></a>`resolver_config_file_mode`
 
 Data type: `Stdlib::Filemode`
 
 Mode of /etc/resolv.conf in octal format
 
 Default value: `'0644'`
+
+##### <a name="-dnsclient--resolver_config_backup"></a>`resolver_config_backup`
+
+Data type: `Optional[Variant[Boolean, String[1]]]`
+
+Sets the 'backup' parameter for /etc/resolv.conf
+
+Default value: `undef`
 

@@ -2,11 +2,22 @@
 
 All notable changes to this project will be documented in this file. The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/) and this project adheres to [Semantic Versioning](http://semver.org).
 
+## [v6.0.0](https://github.com/ghoneycutt/puppet-module-dnsclient/tree/v6.0.0) (2023-11-16)
+
+[Full Changelog](https://github.com/ghoneycutt/puppet-module-dnsclient/compare/v5.0.0...v6.0.0)
+
+### Merged pull requests:
+
+- Support custom lines in /etc/resolv.conf [\#47](https://github.com/ghoneycutt/puppet-module-dnsclient/pull/47) ([treydock](https://github.com/treydock))
+- Add resolver\_config\_backup parameter [\#46](https://github.com/ghoneycutt/puppet-module-dnsclient/pull/46) ([treydock](https://github.com/treydock))
+- Allow setting nameservers limit [\#45](https://github.com/ghoneycutt/puppet-module-dnsclient/pull/45) ([treydock](https://github.com/treydock))
+- Support Puppet 8 and stdlib 9.x [\#44](https://github.com/ghoneycutt/puppet-module-dnsclient/pull/44) ([treydock](https://github.com/treydock))
+
 ## [v5.0.0](https://github.com/ghoneycutt/puppet-module-dnsclient/tree/v5.0.0) (2022-09-19)
 
 [Full Changelog](https://github.com/ghoneycutt/puppet-module-dnsclient/compare/v4.1.0...v5.0.0)
 
-### UNCATEGORIZED PRS; LABEL THEM ON GITHUB
+### Merged pull requests:
 
 - Support Puppet 7 and use PDK [\#42](https://github.com/ghoneycutt/puppet-module-dnsclient/pull/42) ([ghoneycutt](https://github.com/ghoneycutt))
 
@@ -18,7 +29,7 @@ All notable changes to this project will be documented in this file. The format 
 
 [Full Changelog](https://github.com/ghoneycutt/puppet-module-dnsclient/compare/v3.6.0...v4.0.0)
 
-### UNCATEGORIZED PRS; LABEL THEM ON GITHUB
+### Merged pull requests:
 
 - Modernize [\#40](https://github.com/ghoneycutt/puppet-module-dnsclient/pull/40) ([ghoneycutt](https://github.com/ghoneycutt))
 - Remove EOL Puppet Versions [\#39](https://github.com/ghoneycutt/puppet-module-dnsclient/pull/39) ([BuJo](https://github.com/BuJo))
@@ -27,7 +38,7 @@ All notable changes to this project will be documented in this file. The format 
 
 [Full Changelog](https://github.com/ghoneycutt/puppet-module-dnsclient/compare/v3.5.2...v3.6.0)
 
-### UNCATEGORIZED PRS; LABEL THEM ON GITHUB
+### Merged pull requests:
 
 - Add support for Puppet 6 [\#35](https://github.com/ghoneycutt/puppet-module-dnsclient/pull/35) ([Phil-Friderici](https://github.com/Phil-Friderici))
 - Make it explicit that this module is compatible with Puppet 5 [\#34](https://github.com/ghoneycutt/puppet-module-dnsclient/pull/34) ([mattock](https://github.com/mattock))
@@ -37,7 +48,7 @@ All notable changes to this project will be documented in this file. The format 
 
 [Full Changelog](https://github.com/ghoneycutt/puppet-module-dnsclient/compare/v3.5.1...v3.5.2)
 
-### UNCATEGORIZED PRS; LABEL THEM ON GITHUB
+### Merged pull requests:
 
 - Maintenance [\#29](https://github.com/ghoneycutt/puppet-module-dnsclient/pull/29) ([ghoneycutt](https://github.com/ghoneycutt))
 
@@ -49,7 +60,7 @@ All notable changes to this project will be documented in this file. The format 
 
 [Full Changelog](https://github.com/ghoneycutt/puppet-module-dnsclient/compare/v3.4.0...v3.5.0)
 
-### UNCATEGORIZED PRS; LABEL THEM ON GITHUB
+### Merged pull requests:
 
 - Support ruby 231 [\#26](https://github.com/ghoneycutt/puppet-module-dnsclient/pull/26) ([ghoneycutt](https://github.com/ghoneycutt))
 - Fix Travis-ci matrix so that each feature release is tested [\#24](https://github.com/ghoneycutt/puppet-module-dnsclient/pull/24) ([ghoneycutt](https://github.com/ghoneycutt))
@@ -58,7 +69,7 @@ All notable changes to this project will be documented in this file. The format 
 
 [Full Changelog](https://github.com/ghoneycutt/puppet-module-dnsclient/compare/v3.3.0...v3.4.0)
 
-### UNCATEGORIZED PRS; LABEL THEM ON GITHUB
+### Merged pull requests:
 
 - Support Puppet v4 and v3 w/ future parser [\#23](https://github.com/ghoneycutt/puppet-module-dnsclient/pull/23) ([ghoneycutt](https://github.com/ghoneycutt))
 
@@ -66,7 +77,7 @@ All notable changes to this project will be documented in this file. The format 
 
 [Full Changelog](https://github.com/ghoneycutt/puppet-module-dnsclient/compare/v3.2.0...v3.3.0)
 
-### UNCATEGORIZED PRS; LABEL THEM ON GITHUB
+### Merged pull requests:
 
 - Prep for v3.3.0 [\#21](https://github.com/ghoneycutt/puppet-module-dnsclient/pull/21) ([ghoneycutt](https://github.com/ghoneycutt))
 
@@ -78,7 +89,7 @@ All notable changes to this project will be documented in this file. The format 
 
 [Full Changelog](https://github.com/ghoneycutt/puppet-module-dnsclient/compare/v3.1.0...v3.1.1)
 
-### UNCATEGORIZED PRS; LABEL THEM ON GITHUB
+### Merged pull requests:
 
 - Fix travis-ci image in README [\#16](https://github.com/ghoneycutt/puppet-module-dnsclient/pull/16) ([ghoneycutt](https://github.com/ghoneycutt))
 - Gemfile to reflect that 2.7 support has been dropped [\#15](https://github.com/ghoneycutt/puppet-module-dnsclient/pull/15) ([ghoneycutt](https://github.com/ghoneycutt))
@@ -91,7 +102,7 @@ All notable changes to this project will be documented in this file. The format 
 
 [Full Changelog](https://github.com/ghoneycutt/puppet-module-dnsclient/compare/v3.0.5...v3.1.0)
 
-### UNCATEGORIZED PRS; LABEL THEM ON GITHUB
+### Merged pull requests:
 
 - Use non-strict stdlib dependency ? [\#10](https://github.com/ghoneycutt/puppet-module-dnsclient/pull/10) ([sbadia](https://github.com/sbadia))
 
@@ -99,7 +110,7 @@ All notable changes to this project will be documented in this file. The format 
 
 [Full Changelog](https://github.com/ghoneycutt/puppet-module-dnsclient/compare/v3.0.4...v3.0.5)
 
-### UNCATEGORIZED PRS; LABEL THEM ON GITHUB
+### Merged pull requests:
 
 - Support Ruby 1.9 [\#9](https://github.com/ghoneycutt/puppet-module-dnsclient/pull/9) ([ghoneycutt](https://github.com/ghoneycutt))
 - Add normalize testing. [\#8](https://github.com/ghoneycutt/puppet-module-dnsclient/pull/8) ([narf-](https://github.com/narf-))
@@ -109,7 +120,7 @@ All notable changes to this project will be documented in this file. The format 
 
 [Full Changelog](https://github.com/ghoneycutt/puppet-module-dnsclient/compare/0540813220200ca9619ab64b479df9d8c57d2f17...v3.0.4)
 
-### UNCATEGORIZED PRS; LABEL THEM ON GITHUB
+### Merged pull requests:
 
 - Add @ to variables in template. [\#5](https://github.com/ghoneycutt/puppet-module-dnsclient/pull/5) ([ghoneycutt](https://github.com/ghoneycutt))
 - Fix fixtures so stdlib v3.2.0 is tracked. [\#4](https://github.com/ghoneycutt/puppet-module-dnsclient/pull/4) ([ghoneycutt](https://github.com/ghoneycutt))
@@ -158,4 +169,4 @@ All notable changes to this project will be documented in this file. The format 
 * Initial release
 
 
-\* *This Changelog was automatically generated by [github_changelog_generator](https://github.com/skywinder/Github-Changelog-Generator)*
+\* *This Changelog was automatically generated by [github_changelog_generator](https://github.com/github-changelog-generator/github-changelog-generator)*
