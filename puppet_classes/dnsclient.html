@@ -6,7 +6,7 @@
 <title>
   Puppet Class: dnsclient
   
-    &mdash; Documentation by YARD 0.9.28
+    &mdash; Documentation by YARD 0.9.34
   
 </title>
 
@@ -84,6 +84,7 @@
 </div>
 
 
+
 <div class="tags">
   <p class="tag_title">Parameters:</p>
 <ul class="param">
@@ -101,7 +102,25 @@
       
         &mdash;
         <div class='inline'>
-<p>Array of nameservers. The default use Google&#39;s public name servers.</p>
+<p>Array of nameservers. The default use Google’s public name servers.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>nameserver_limit</span>
+      
+      
+        <span class='type'>(<tt>Optional[Integer[0]]</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>undef</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Integer of the number of nameservers to allow in the resolv.conf NOTE: If ‘nameservers’ is over this limit, only the first X nameservers will be used where X is set by this limit.  The nameservers over the limit will be discarded.</p>
 </div>
       
     </li>
@@ -174,6 +193,24 @@
         &mdash;
         <div class='inline'>
 <p>Optional array of sortlist entries</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>custom_lines</span>
+      
+      
+        <span class='type'>(<tt>Array[String[1]]</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>[]</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Array of lines that will be added to the end of /etc/resolv.conf</p>
 </div>
       
     </li>
@@ -268,6 +305,24 @@
       
     </li>
   
+    <li>
+      
+        <span class='name'>resolver_config_backup</span>
+      
+      
+        <span class='type'>(<tt>Optional[Variant[Boolean, String[1]]]</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>undef</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Sets the ‘backup’ parameter for /etc/resolv.conf</p>
+</div>
+      
+    </li>
+  
 </ul>
 
 
@@ -279,17 +334,6 @@
         <pre class="lines">
 
 
-35
-36
-37
-38
-39
-40
-41
-42
-43
-44
-45
 46
 47
 48
@@ -304,26 +348,62 @@
 57
 58
 59
-60</pre>
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84</pre>
       </td>
       <td>
-        <pre class="code"><span class="info file"># File 'manifests/init.pp', line 35</span>
+        <pre class="code"><span class="info file"># File 'manifests/init.pp', line 46</span>
 
 class dnsclient (
   Array[Stdlib::IP::Address] $nameservers = [&#39;8.8.8.8&#39;, &#39;8.8.4.4&#39;],
+  Optional[Integer[0]] $nameserver_limit = undef,
   Array $options = [&#39;rotate&#39;, &#39;timeout:1&#39;],
   Optional[Array[String[1]]] $search = undef,
   Optional[Stdlib::Fqdn] $domain = undef,
   Optional[Array[String[1]]] $sortlist = undef,
+  Array[String[1]] $custom_lines = [],
   Stdlib::Absolutepath $resolver_config_file = &#39;/etc/resolv.conf&#39;,
   String[1] $resolver_config_file_ensure = &#39;file&#39;,
   String[1] $resolver_config_file_owner = &#39;root&#39;,
   String[1] $resolver_config_file_group = &#39;root&#39;,
   Stdlib::Filemode $resolver_config_file_mode = &#39;0644&#39;,
+  Optional[Variant[Boolean, String[1]]] $resolver_config_backup = undef,
 ) {
 
   if $search and $domain {
     fail(&#39;search and domain are mutually exclusive and both have been defined.&#39;)
+  }
+
+  # Only 3 nameservers are generally allowed by resolv.conf, so lets ensure that
+  # (While letting people do interesting things in hiera to generate nameserver lists)
+  # Also provide a way to override
+  if $nameserver_limit {
+    $nameservers_slice = $nameservers[0,$nameserver_limit]
+  } else {
+    $nameservers_slice = $nameservers
   }
 
   file { &#39;dnsclient_resolver_config_file&#39;:
@@ -333,6 +413,7 @@ class dnsclient (
     owner   =&gt; $resolver_config_file_owner,
     group   =&gt; $resolver_config_file_group,
     mode    =&gt; $resolver_config_file_mode,
+    backup  =&gt; $resolver_config_backup,
   }
 }</pre>
       </td>
