@@ -1,4 +1,4 @@
-FROM puppet/pdk:latest
+FROM ruby:3.2
 
 # [Optional] Uncomment this section to install additional packages.
 # RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \

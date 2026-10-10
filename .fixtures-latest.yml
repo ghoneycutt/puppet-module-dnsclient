@@ -5,5 +5,3 @@ fixtures:
   repositories:
     stdlib:
       repo: https://github.com/puppetlabs/puppetlabs-stdlib.git
-  symlinks:
-    dnsclient: "#{source_dir}"

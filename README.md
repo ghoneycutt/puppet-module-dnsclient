@@ -14,7 +14,7 @@
 ## Module description
 
 This module manages `/etc/resolv.conf` and its various options. It is
-feature complete for the supported platforms.
+feature complete and future proof by allowing for custom lines.
 
 [Documented with puppet-strings](http://ghoneycutt.github.io/puppet-module-dnsclient/)
 
@@ -48,7 +48,7 @@ include dnsclient
 This module officially supports the platforms listed in the
 `metadata.json`. It does not fail on unsupported platforms and has been
 known to work on many, many platforms since its creation in 2010 and
-should work with any unix based platform that uses `/etc/resolv.conf`.
+should work with any unix based platform that uses `resolv.conf`.
 
 ## Development
 
