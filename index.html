@@ -6,13 +6,13 @@
 <title>
   File: README
   
-    &mdash; Documentation by YARD 0.9.34
+    &mdash; Documentation by YARD 0.9.45
   
 </title>
 
-  <link rel="stylesheet" href="css/style.css" type="text/css" />
+  <link rel="stylesheet" href="css/style.css" type="text/css">
 
-  <link rel="stylesheet" href="css/common.css" type="text/css" />
+  <link rel="stylesheet" href="css/common.css" type="text/css">
 
 <script type="text/javascript">
   pathId = "";
@@ -27,6 +27,8 @@
 
   </head>
   <body>
+    <div id="main_progress" aria-hidden="true"></div>
+
     <div class="nav_wrap">
       <iframe id="nav" src="puppet_class_list.html?1"></iframe>
       <div id="resizer"></div>
@@ -57,67 +59,49 @@
         <div class="clear"></div>
       </div>
 
-      <div id="content"><div id='filecontents'>
-<h1 id="label-dnsclient">dnsclient</h1>
-
-<h4 id="label-Table+of+Contents">Table of Contents</h4>
-<ol><li>
-<p><a href="#module-description">Module Description - What the module does and why it is useful</a></p>
-</li><li>
-<p><a href="#setup">Setup - The basics of getting started with dnsclient</a></p>
-</li><li>
-<p><a href="#what-dnsclient-affects">What dnsclient affects</a></p>
-</li><li>
-<p><a href="#setup-requirements">Setup requirements</a></p>
-</li><li>
-<p><a href="#beginning-with-dnsclient">Beginning with dnsclient</a></p>
-</li><li>
-<p><a href="#usage">Usage - Configuration options and additional functionality</a></p>
-</li><li>
-<p><a href="#limitations">Limitations - OS compatibility, etc.</a></p>
-</li><li>
-<p><a href="#development">Development - Guide for contributing to the module</a></p>
-</li></ol>
-
-<h2 id="label-Module+description">Module description</h2>
-
-<p>This module manages <code>/etc/resolv.conf</code> and its various options. It is feature complete for the supported platforms.</p>
-
+      <div id="content"><div id='filecontents'><h1 id="dnsclient">dnsclient</h1>
+<h4 id="Table_of_Contents">Table of Contents</h4>
+<ol>
+<li><a href="#module-description">Module Description - What the module does and why it is useful</a></li>
+<li>
+<a href="#setup">Setup - The basics of getting started with dnsclient</a>
+<ul>
+<li><a href="#what-dnsclient-affects">What dnsclient affects</a></li>
+<li><a href="#setup-requirements">Setup requirements</a></li>
+<li><a href="#beginning-with-dnsclient">Beginning with dnsclient</a></li>
+</ul>
+</li>
+<li><a href="#usage">Usage - Configuration options and additional functionality</a></li>
+<li><a href="#limitations">Limitations - OS compatibility, etc.</a></li>
+<li><a href="#development">Development - Guide for contributing to the module</a></li>
+</ol>
+<h2 id="Module_description">Module description</h2>
+<p>This module manages <code>/etc/resolv.conf</code> and its various options. It is
+feature complete and future proof by allowing for custom lines.</p>
 <p><a href="http://ghoneycutt.github.io/puppet-module-dnsclient/">Documented with puppet-strings</a></p>
-
-<h2 id="label-Setup">Setup</h2>
-
-<h3 id="label-What+dnsclient+affects">What dnsclient affects</h3>
-
+<h2 id="Setup">Setup</h2>
+<h3 id="What_dnsclient_affects">What dnsclient affects</h3>
 <p>Manages the system resolver, <code>/etc/resolv.conf</code>.</p>
-
-<h3 id="label-Setup+requirements">Setup requirements</h3>
-
+<h3 id="Setup_requirements">Setup requirements</h3>
 <p>This module requires <code>stdlib</code>.</p>
-
-<h3 id="label-Beginning+with+dnsclient">Beginning with dnsclient</h3>
-
-<p>Include the <code>dnsclient</code> class and it will configure the resolver to use Google’s public name servers.</p>
-
-<h2 id="label-Usage">Usage</h2>
-
-<p>Minimal and normal usage. See the <a href="https://github.com/ghoneycutt/puppet-module-dnsclient/tree/master/examples">examples</a> directory for more usage examples.</p>
-
-<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_include'>include</span> <span class='id identifier rubyid_dnsclient'>dnsclient</span>
+<h3 id="Beginning_with_dnsclient">Beginning with dnsclient</h3>
+<p>Include the <code>dnsclient</code> class and it will configure the resolver to use
+Google's public name servers.</p>
+<h2 id="Usage">Usage</h2>
+<p>Minimal and normal usage. See the
+<a href="https://github.com/ghoneycutt/puppet-module-dnsclient/tree/master/examples">examples</a>
+directory for more usage examples.</p>
+<pre class="code puppet"><code class="puppet">include dnsclient
 </code></pre>
-
-<h2 id="label-Limitations">Limitations</h2>
-
-<p>This module officially supports the platforms listed in the <code>metadata.json</code>. It does not fail on unsupported platforms and has been known to work on many, many platforms since its creation in 2010 and should work with any unix based platform that uses <code>/etc/resolv.conf</code>.</p>
-
-<h2 id="label-Development">Development</h2>
-
-<p>See <a href="CONTRIBUTING_md.html">CONTRIBUTING.md</a></p>
-
-<h2 id="label-License">License</h2>
-
-<p>See <a href="LICENSE">LICENSE</a> file.</p>
-</div></div>
+<h2 id="Limitations">Limitations</h2>
+<p>This module officially supports the platforms listed in the
+<code>metadata.json</code>. It does not fail on unsupported platforms and has been
+known to work on many, many platforms since its creation in 2010 and
+should work with any unix based platform that uses <code>resolv.conf</code>.</p>
+<h2 id="Development">Development</h2>
+<p>See <a href="CONTRIBUTING.md">CONTRIBUTING.md</a></p>
+<h2 id="License">License</h2>
+<p>See <a href="LICENSE">LICENSE</a> file.</p></div></div>
 
       <div id="footer">
      Generated by <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>.

@@ -6,13 +6,13 @@
 <title>
   Puppet Class: dnsclient
   
-    &mdash; Documentation by YARD 0.9.34
+    &mdash; Documentation by YARD 0.9.45
   
 </title>
 
-  <link rel="stylesheet" href="../css/style.css" type="text/css" />
+  <link rel="stylesheet" href="../css/style.css" type="text/css">
 
-  <link rel="stylesheet" href="../css/common.css" type="text/css" />
+  <link rel="stylesheet" href="../css/common.css" type="text/css">
 
 <script type="text/javascript">
   pathId = "puppet_classes::dnsclient";
@@ -27,6 +27,8 @@
 
   </head>
   <body>
+    <div id="main_progress" aria-hidden="true"></div>
+
     <div class="nav_wrap">
       <iframe id="nav" src="../puppet_class_list.html?1"></iframe>
       <div id="resizer"></div>
@@ -77,9 +79,7 @@
 <h2>Overview</h2>
 <div class="docstring">
   <div class="discussion">
-    
-<p>This module manages <code>/etc/resolv.conf</code>.</p>
-
+    <p>This module manages <code>/etc/resolv.conf</code>.</p>
   </div>
 </div>
 
@@ -101,9 +101,7 @@
       
       
         &mdash;
-        <div class='inline'>
-<p>Array of nameservers. The default use Google’s public name servers.</p>
-</div>
+        <div class='inline'><p>Array of nameservers. The default use Google's public name servers.</p></div>
       
     </li>
   
@@ -119,9 +117,9 @@
       
       
         &mdash;
-        <div class='inline'>
-<p>Integer of the number of nameservers to allow in the resolv.conf NOTE: If ‘nameservers’ is over this limit, only the first X nameservers will be used where X is set by this limit.  The nameservers over the limit will be discarded.</p>
-</div>
+        <div class='inline'><p>Integer of the number of nameservers to allow in the resolv.conf
+NOTE: If 'nameservers' is over this limit, only the first X nameservers will be used where X is set by this limit.
+The nameservers over the limit will be discarded.</p></div>
       
     </li>
   
@@ -137,9 +135,7 @@
       
       
         &mdash;
-        <div class='inline'>
-<p>Array of options. Set to <code>[]</code> if no options line should be present.</p>
-</div>
+        <div class='inline'><p>Array of options. Set to <code>[]</code> if no options line should be present.</p></div>
       
     </li>
   
@@ -155,9 +151,7 @@
       
       
         &mdash;
-        <div class='inline'>
-<p>Optional array of domains for search list. This is mutually exclusive with <code>domain</code>.</p>
-</div>
+        <div class='inline'><p>Optional array of domains for search list. This is mutually exclusive with <code>domain</code>.</p></div>
       
     </li>
   
@@ -173,9 +167,7 @@
       
       
         &mdash;
-        <div class='inline'>
-<p>Optional domain setting. This is mutually exclusive with <code>search</code>.</p>
-</div>
+        <div class='inline'><p>Optional domain setting. This is mutually exclusive with <code>search</code>.</p></div>
       
     </li>
   
@@ -191,9 +183,7 @@
       
       
         &mdash;
-        <div class='inline'>
-<p>Optional array of sortlist entries</p>
-</div>
+        <div class='inline'><p>Optional array of sortlist entries</p></div>
       
     </li>
   
@@ -209,9 +199,7 @@
       
       
         &mdash;
-        <div class='inline'>
-<p>Array of lines that will be added to the end of /etc/resolv.conf</p>
-</div>
+        <div class='inline'><p>Array of lines that will be added to the end of /etc/resolv.conf</p></div>
       
     </li>
   
@@ -227,9 +215,7 @@
       
       
         &mdash;
-        <div class='inline'>
-<p>Path to resolv.conf</p>
-</div>
+        <div class='inline'><p>Path to resolv.conf</p></div>
       
     </li>
   
@@ -245,9 +231,7 @@
       
       
         &mdash;
-        <div class='inline'>
-<p>Value of ensure attribute for the /etc/resolv.conf file resource</p>
-</div>
+        <div class='inline'><p>Value of ensure attribute for the /etc/resolv.conf file resource</p></div>
       
     </li>
   
@@ -263,9 +247,7 @@
       
       
         &mdash;
-        <div class='inline'>
-<p>User of /etc/resolv.conf</p>
-</div>
+        <div class='inline'><p>User of /etc/resolv.conf</p></div>
       
     </li>
   
@@ -281,9 +263,7 @@
       
       
         &mdash;
-        <div class='inline'>
-<p>Group of /etc/resolv.conf</p>
-</div>
+        <div class='inline'><p>Group of /etc/resolv.conf</p></div>
       
     </li>
   
@@ -299,9 +279,7 @@
       
       
         &mdash;
-        <div class='inline'>
-<p>Mode of /etc/resolv.conf in octal format</p>
-</div>
+        <div class='inline'><p>Mode of /etc/resolv.conf in octal format</p></div>
       
     </li>
   
@@ -317,9 +295,7 @@
       
       
         &mdash;
-        <div class='inline'>
-<p>Sets the ‘backup’ parameter for /etc/resolv.conf</p>
-</div>
+        <div class='inline'><p>Sets the 'backup' parameter for /etc/resolv.conf</p></div>
       
     </li>
   
