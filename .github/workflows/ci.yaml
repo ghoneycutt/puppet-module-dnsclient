@@ -23,11 +23,11 @@ jobs:
             openvox: 8
             fixtures: .fixtures-latest.yml
             allow_failure: true
-          - ruby: 3.2.4
+          - ruby: '4.0'
             openvox: 9
             fixtures: .fixtures.yml
             allow_failure: false
-          - ruby: 3.2.4
+          - ruby: '4.0'
             openvox: 9
             fixtures: .fixtures-latest.yml
             allow_failure: true
@@ -44,7 +44,6 @@ jobs:
           ruby-version: ${{ matrix.ruby }}
           bundler-cache: true
           cache-version: 2
-          bundler: '2.1.0'
       - name: Validate
         run: bundle exec rake check:git_ignore check:dot_underscore check:test_file rubocop syntax lint metadata_lint
       - name: Run tests
