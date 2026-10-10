@@ -10,45 +10,28 @@
   "dependencies": [
     {
       "name": "puppetlabs/stdlib",
-      "version_requirement": ">= 8.0.0 < 10.0.0"
+      "version_requirement": ">= 9.7.0 < 11.0.0"
     }
   ],
   "operatingsystem_support": [
     {
-      "operatingsystem": "Debian",
-      "operatingsystemrelease": [
-        "11"
-      ]
+      "operatingsystem": "Debian"
     },
     {
-      "operatingsystem": "RedHat",
-      "operatingsystemrelease": [
-        "8",
-        "9"
-      ]
+      "operatingsystem": "RedHat"
     },
     {
-      "operatingsystem": "Solaris",
-      "operatingsystemrelease": [
-        "10"
-      ]
+      "operatingsystem": "Solaris"
     },
     {
-      "operatingsystem": "Ubuntu",
-      "operatingsystemrelease": [
-        "20.04",
-        "22.04"
-      ]
+      "operatingsystem": "Ubuntu"
     }
   ],
   "requirements": [
     {
-      "name": "puppet",
-      "version_requirement": ">= 7.0.0 < 9.0.0"
+      "name": "openvox",
+      "version_requirement": ">= 8.19.0 < 10.0.0"
     }
   ],
-  "description": "Manage a DNS client's resolver",
-  "pdk-version": "3.0.0",
-  "template-url": "https://github.com/tailored-automation/pdk-templates#main",
-  "template-ref": "heads/main-0-g53868f7"
+  "description": "Manage a DNS client's resolver"
 }

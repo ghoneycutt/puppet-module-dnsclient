@@ -1,0 +1,13 @@
+# Facts specified here will override the values provided by rspec-puppet-facts.
+---
+# The rspec facter implementation used by voxpupuli-test resolves facts only
+# from the fact set given to each example. Puppet itself looks up
+# networking.ip and networking.fqdn when building the node, which logs
+# "Could not retrieve fact ..." warnings for fact sets lacking them. Note
+# this replaces the whole networking hash from rspec-puppet-facts, so every
+# key Puppet asks for must be listed here.
+networking:
+  ip: '192.0.2.1'
+  hostname: 'foo'
+  domain: 'example.com'
+  fqdn: 'foo.example.com'

@@ -2,6 +2,4 @@ fixtures:
   repositories:
     stdlib:
       repo: 'https://github.com/puppetlabs/puppetlabs-stdlib.git'
-      ref: 'v9.0.0'
-  symlinks:
-    dnsclient: "#{source_dir}"
+      ref: 'v9.7.0'
