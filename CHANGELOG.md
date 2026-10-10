@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/) and this project adheres to [Semantic Versioning](http://semver.org).
 
+## [v7.0.0](https://github.com/ghoneycutt/puppet-module-dnsclient/tree/v7.0.0) (2026-10-10)
+
+[Full Changelog](https://github.com/ghoneycutt/puppet-module-dnsclient/compare/v6.0.0...v7.0.0)
+
+### Merged pull requests:
+
+- Support OpenVox 8 and 9 [\#48](https://github.com/ghoneycutt/puppet-module-dnsclient/pull/48) ([ghoneycutt](https://github.com/ghoneycutt))
+
 ## [v6.0.0](https://github.com/ghoneycutt/puppet-module-dnsclient/tree/v6.0.0) (2023-11-16)
 
 [Full Changelog](https://github.com/ghoneycutt/puppet-module-dnsclient/compare/v5.0.0...v6.0.0)

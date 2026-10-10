@@ -137,4 +137,3 @@ Data type: `Optional[Variant[Boolean, String[1]]]`
 Sets the 'backup' parameter for /etc/resolv.conf
 
 Default value: `undef`
-
